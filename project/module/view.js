@@ -44,22 +44,19 @@ export const URLS = {
 	}
 }
 
-export function changeHeaderContent(cityName, {
-	main: { temp },
-	weather: [{ icon }] }) {
-	UI_ELEMENTS.HEADER_TEMPERATURE.textContent = `${convertToCelsius(temp)}°`;
+export function changeHeaderContent(cityName, { main, weather }) {
+	UI_ELEMENTS.HEADER_TEMPERATURE.textContent = `${convertToCelsius(main.temp)}°`;
 	UI_ELEMENTS.CURRENT_CITY_NAME.textContent = convertCityName(cityName);
-	UI_ELEMENTS.IMAGE_MOOD.setAttribute('src', URLS.weatherImgUrl(icon));
+	UI_ELEMENTS.IMAGE_MOOD.setAttribute('src', URLS.weatherImgUrl(weather[0].icon));
 }
 
-export function changeDetailContent(cityName, {
-	main: { temp, feels_like },
-	weather: [{ main }],
-	sys: { sunrise, sunset } }) {
+export function changeDetailContent(cityName, { main, weather, sys }) {
+	const { temp, feels_like } = main;
+	const { sunrise, sunset } = sys;
 	UI_ELEMENTS.DETAILS_CITY.textContent = convertCityName(cityName);
 	UI_ELEMENTS.DETAILS_CITY_TEMP.textContent = `Temperature: ${convertToCelsius(temp)}°`;
 	UI_ELEMENTS.DETAILS_CITY_FEELS.textContent = `Feels like: ${convertToCelsius(feels_like)}°`;
-	UI_ELEMENTS.DETAILS_CITY_MOOD.textContent = `Weather: ${main}`;
+	UI_ELEMENTS.DETAILS_CITY_MOOD.textContent = `Weather: ${weather.main}`;
 	UI_ELEMENTS.DETAILS_CITY_SUNRICE.textContent = `Sunrise: ${timeConverter(sunrise)}`;
 	UI_ELEMENTS.DETAILS_CITY_SUNSET.textContent = `Sunset: ${timeConverter(sunset)}`;
 }
