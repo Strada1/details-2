@@ -26,7 +26,7 @@ export const UI_ELEMENTS = {
 
 export const URLS = {
 	weatherImgUrl(idWeatherMood) {
-		const serverUrl = 'http://openweathermap.org/img/wn/';
+		const serverUrl = 'https://openweathermap.org/img/wn/';
 		const url = `${serverUrl}${idWeatherMood}@4x.png`
 		return url;
 	},
@@ -56,7 +56,7 @@ export function changeDetailContent(cityName, { main, weather, sys }) {
 	UI_ELEMENTS.DETAILS_CITY.textContent = convertCityName(cityName);
 	UI_ELEMENTS.DETAILS_CITY_TEMP.textContent = `Temperature: ${convertToCelsius(temp)}°`;
 	UI_ELEMENTS.DETAILS_CITY_FEELS.textContent = `Feels like: ${convertToCelsius(feels_like)}°`;
-	UI_ELEMENTS.DETAILS_CITY_MOOD.textContent = `Weather: ${weather.main}`;
+	UI_ELEMENTS.DETAILS_CITY_MOOD.textContent = `Weather: ${weather[0].main}`;
 	UI_ELEMENTS.DETAILS_CITY_SUNRICE.textContent = `Sunrise: ${timeConverter(sunrise)}`;
 	UI_ELEMENTS.DETAILS_CITY_SUNSET.textContent = `Sunset: ${timeConverter(sunset)}`;
 }
