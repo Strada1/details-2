@@ -43,7 +43,6 @@ function getWeather(cityName) {
 		})
 		.then(data => {
 			weatherData = data;
-			console.log(weatherData);
 		})
 		.then(() => {
 			changeHeaderContent(cityName, weatherData);
