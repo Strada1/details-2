@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="todo">
+        <div class="todo__priority">
+          <div class="rang-priority_high">
+            <h3 class="rang__position">HIGH</h3>
+            <form class="add-task">
+              <input minlength="4" type="text" class="add-task__input" placeholder="Добавьте важную задачу" data-priority="high" required/>
+              <input type="datetime-local" max="2999-12-31T23:59" min="2000-01-01T00:00"
+              pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" required/>
+              <button type="submit" class="task__remove task__remove_rotate"></button>
+            </form>
+            <div class="task-list">
+            </div>
+          </div>
+          <div class="rang-priority_low" >
+            <h3 class="rang__position">LOW</h3>
+            <form class="add-task">
+              <input minlength="4" type="text" class="add-task__input" placeholder="Добавьте задачу" data-priority="low"/>
+              <input type="datetime-local" max="2999-12-31T23:59" min="2000-01-01T00:00"
+              pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" required/>
+
+              <button type="submit" class="task__remove task__remove_rotate"></button>
+            </form>
+            <div class="task-list">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="js/script.js"></script>
+  </body>
+</html>

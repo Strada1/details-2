@@ -1,0 +1,132 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+   }
+   
+   *,
+   *:before,
+   *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+   }
+   input{
+    outline: none;
+   }
+.main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.todo{
+    width: 400px;
+    height: 600px;
+    border-radius: 8px;
+    padding: 5px;
+    overflow:hidden;
+    background-color: wheat;
+
+}
+
+.rang__position{
+    text-align: center;
+}
+.add-task{
+    display: flex;
+    width: 100%;
+    height: 24px;
+    gap: 5px;
+    border-radius: 4px;
+    border: 2px solid black;
+    background-color: white;
+    padding: 0 2px 0 5px;
+}
+.add-task__input{
+    flex: 1 0;
+    font-size: 16px;
+}
+.task{
+    display: grid;
+    grid-template: 20px 1fr/20px 85% 20px;
+    gap: 4px;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 4px;
+    background-color: rgba(255, 99, 71, 0.555);
+}
+.task-list{
+    position: relative;
+    max-height: 245px;
+    overflow-y: auto;
+    
+}
+.task-list__task{
+    margin: 6px auto;
+}
+
+input[type="checkbox"] {
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	border: 2px solid #555555;
+	background-clip:content-box;
+	padding: 3px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+input[type="checkbox"]:checked {
+	background-color: #555555;
+}
+input[type="checkbox"]:hover{
+    background-color: blue;
+}
+.task__check{
+    display: grid;
+    position: relative;
+    grid-template-columns: 20px auto;
+    column-gap: 8px;
+}
+.task__text{
+    font-size: 20px;
+    grid-column: span 3;
+    text-indent: 30px;
+}
+.task__text::first-letter{
+    font-weight: bold;
+}
+.task__time{
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: underline;
+}
+.task__remove {
+    width: 1em;
+    height: 1em;
+    margin: 2px;
+    cursor: pointer;
+    background-color: gray;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    transition: 0.3s;
+}
+
+.task__remove_rotate{
+    transform: rotate(45deg);
+}
+
+.task__remove:hover{
+    background-color: rgba(255, 0, 0, 0.664);
+}
+.task__remove_rotate:hover{
+    background-color: rgba(0, 128, 0, 0.795);
+}
+.-complete{
+    background-color: rgba(104, 104, 104, 0.288);
+    border: 1px solid rgba(128, 128, 128, 0.493);
+}
+.-low-priority{
+    background-color: rgba(255, 131, 109, 0.486);
+}
