@@ -1,0 +1,481 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+/* # sourceMappingURL=nullstyle.css.map */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgb(230, 230, 230);
+  font-size: 24px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  width: 100%;
+  height: 455px;
+  padding: 10px;
+  margin: auto;
+}
+
+.container {
+  width: 600px;
+  height: 435px;
+  background-color: #fff;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  display: flex;
+  flex-direction: column;
+}
+
+/*================ SEARCH ==============*/
+
+.section-search {
+  height: 45px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #000000;
+  display: flex;
+  padding-left: 16px;
+  padding-right: 16px;
+  &:focus-within {
+    box-shadow: inset 0px 0px 0px 4px #999;
+    transition: all 0.5s ease 0s;
+  }
+}
+
+.section-search input {
+  font-size: 18px;
+  flex: 1 0 auto;
+}
+
+.form-search {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+.input-search {
+  line-height: 36px;
+}
+
+.input-search:focus::placeholder {
+  color: transparent;
+}
+
+.button-search {
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  opacity: 0.54;
+  &:hover {
+    opacity: 0.8;
+    transition: opacity 0.5s ease 0s;
+  }
+}
+
+/*================  ==============*/
+
+.section-main {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+/*================ LEFT SIDE ==============*/
+
+.section-tabs {
+  flex: 1 1 50%;
+  box-sizing: border-box;
+  border-right: 1px solid #000000;
+  display: flex;
+  flex-direction: column;
+}
+
+.block-tabs {
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  border-bottom: 1px solid #000000;
+  cursor: default;
+}
+
+.tab-content {
+  display: none;
+  height: 100%;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/*================ TAB - NOW ==============*/
+
+.tab-now {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.now-temperature {
+  display: none;
+  flex: 1 1 33.333%;
+  font-size: 70px;
+  padding-left: 23px;
+  padding-top: 23px;
+}
+
+.now-sky {
+  margin: 0 auto 0 auto;
+}
+
+.picture-weather {
+  display: none;
+  width: 160px;
+  height: 160px;
+}
+
+.now-city {
+  flex: 1 1 33.333%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-left: 12px;
+  padding-bottom: 17px;
+  padding-right: 26px;
+}
+
+.favorite-button {
+  opacity: 0.54;
+  fill: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+    // fill: #000;
+  }
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.favorite-button.checked {
+  fill: #000;
+  opacity: 0.8;
+}
+
+/*================ TAB - DETAILS ==============*/
+
+.details-city-name {
+  height: 68px;
+  padding-left: 18px;
+  padding-bottom: 7px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.details-list {
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 30px;
+  overflow: scroll;
+  height: 274px;
+}
+
+.details-item {
+  margin-bottom: 20px;
+}
+
+/*================ TAB - FORECAST ==============*/
+
+.tab-forecast {
+}
+
+.forecast-city-name {
+  height: 68px;
+  padding-left: 18px;
+  padding-bottom: 7px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.forecast-list {
+  padding-left: 18px;
+  padding-right: 18px;
+  font-size: 18px;
+  height: 274px;
+  overflow: scroll;
+}
+
+.forecast-item {
+  margin-bottom: 8px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+}
+
+.date-time {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+}
+
+.time {
+}
+
+.weather {
+  display: flex;
+  justify-content: space-between;
+}
+
+.temper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.real-temp {
+  font-size: 16px;
+}
+
+.feels-temp {
+  font-size: 16px;
+}
+
+.sky {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.sky-text {
+}
+
+.sky-pic {
+  width: 40px;
+  height: 40px;
+  // background: url(images/icon-rain.svg) 0 0 /100% no-repeat;
+}
+
+/*================ LINKS FOR TABS ==============*/
+
+.block-links {
+  height: 45px;
+  display: flex;
+  font-size: 18px;
+  line-height: 45px;
+}
+
+.tab-links {
+  flex: 0 0 33.333%;
+  text-align: center;
+  cursor: pointer;
+  &:nth-child(1) {
+    box-sizing: border-box;
+    border-right: 1px solid #000000;
+  }
+  &:nth-child(2) {
+    box-sizing: border-box;
+    border-right: 1px solid #000000;
+  }
+  &:hover {
+    background-color: rgb(223, 223, 223);
+    transition: background-color 0.5s ease 0s;
+  }
+}
+
+.tab-links.active {
+  background-color: #000;
+  transition: none;
+  color: #fff;
+}
+
+/*================ RIGHT SIDE - FAVORITE ==============*/
+
+.section-favorite {
+  flex: 1 1 50%;
+  cursor: default;
+  position: relative;
+}
+
+.favorite-title-block {
+  height: 68px;
+  border-bottom: 1px solid #000000;
+  padding-left: 18px;
+  padding-bottom: 7px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.favorite-list-block {
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 30px;
+  overflow: scroll;
+  height: 320px;
+}
+
+.list-item {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  &:hover {
+    color: rgb(79, 22, 133);
+    cursor: pointer;
+  }
+}
+
+.list-item_btn {
+  line-height: 24px;
+  font-size: 16px;
+  &:hover {
+    color: red;
+  }
+}
+
+/*================ ERROR ==============*/
+
+.error-block {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  background: rgb(132, 132, 132);
+  padding: 5px;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.error-block.active {
+  display: block;
+}
+
+.error-message {
+  display: inline-block;
+}
+
+.error-close {
+  font-size: 16px;
+  display: inline-block;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.button-clear {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  width: 100px;
+  font-size: 12px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  background-color: #999;
+  cursor: pointer;
+  z-index: 5;
+  &:hover {
+    background-color: #dfdddd;
+  }
+  &:active {
+    background-color: #c4c3c3;
+  }
+}
