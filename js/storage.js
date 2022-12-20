@@ -14,6 +14,11 @@ export function addStorageFavoriteCities(array) {
 
 export function getStorageFavoriteCities() {
   const json = localStorage.getItem('favoriteCities');
-  const array = JSON.parse(json);
+  let array;
+  if (!json) {
+    array = []
+  } else {
+    array = JSON.parse(json);
+  }
   return array;
 }
