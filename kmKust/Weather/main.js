@@ -60,8 +60,8 @@ async function cityDataSearch(cityName) {
 		if (!data.name) {
 			throw new Error("Введите существующий город")
 		}
-
 		CityData(data);
+
 	} catch (error) {
 		alert(`Ошибка: ${error.message}`);
 	}
