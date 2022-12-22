@@ -1,0 +1,107 @@
+h1,a,p,li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color:black;
+    text-decoration: none;
+}
+.all{
+    display: flex;
+        height: 435px;
+        flex-direction: column;
+        width: 600px;
+}
+.addnametask{
+    height: 44px;
+        border: solid 1px;
+        width: 595px;
+}
+.tab {
+    display: none;
+}
+
+.tab:target {
+    display: block;
+}
+
+.tab::before {
+    background-color: black;
+}
+
+.snow{
+position: absolute;
+    width:28px;
+    height: 28px;
+    top: 345px;
+        left: 250px;
+       background-image: url("Shape.png");
+       background-repeat: no-repeat;
+}
+.snow_black {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: 345px;
+    left: 250px;
+    background-color: black;
+   /* background-image: url("Shape.png");
+    background-repeat: no-repeat;*/
+}
+.rain{
+position: absolute;
+    width: 120px;
+    height: 120px;
+    top:180px;
+    left: 100px;
+}
+.grad{
+    position: absolute;
+        width: 95px;
+        height: 83px;
+        top: 65px;
+            left: 23px;
+        font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 70px;
+            line-height: 82px;
+}
+.name{
+    position: absolute;
+        width: 76px;
+        height: 28px;
+        top: 345px;
+            left: 12px;
+}
+.search{
+    position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 7px;
+            left: 553px;
+}
+.but{
+    margin: 10px 5px 5px 5px;
+    border: none;
+    background-color: white;
+}
+.forecast_cells{
+    height: 90px;
+        border: solid 1px;
+        width: 90%;
+        margin: 5px auto;
+}
+.forecast{
+    height: 340px;
+    overflow-y: scroll;
+}
+.blockcity{
+display: flex;
+justify-content: space-between;
+background-color: blanchedalmond;
+}
+.listcity{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}

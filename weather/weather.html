@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+	<title>Weather</title>
+	
+	<link rel="stylesheet" href="style.css" />
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+</head>
+
+<body>
+            <section>
+<div class="all">
+    <form type="submit" name="first" class="addnametask">
+        <input class="input" style="height:43px;border: solid 1px;width:593px;">
+<button class=" but search" >
+<img src='search.png'>
+</button>
+    </form>
+    <div style="display: flex;flex-direction: row;">
+    <div style="display: flex; width: 299px; flex-direction: column; height: 390px;">
+        <div  style="height:345px;border: solid 1px;">
+            <a id="tab_01" class="tab" >
+               <div class="grad"></div>
+                <img class="rain" src="https://flyclipart.com/thumb2/loading-934433.png" alt="Отсутсвует подключение к интернету">
+               <div class="name"></div>
+                <div class="snow"></div>
+            </a>
+            <a id="tab_02" class="tab">
+                <div class="name-details">City Name</div>
+                <ul class="additional">
+                  
+                </ul>
+            </a>
+            <a id="tab_03" class="tab forecast">
+                <p>City</p>
+                <div class="forecast_cells">
+                </div>
+                <div class="forecast_cells">
+                </div>
+            <div class="forecast_cells">
+            </div>
+            <div class="forecast_cells">
+            </div>
+            </a>
+        </div>
+        <div style="height:44px;border: solid 1px;width: 297px; z-index: 10; background-color: white;">
+            <div style="display: flex;width: 298px; height: 99px;">
+                <div style="border-right: solid 1px;width: 33.33%; height: 44px;">
+            <a href="#tab_01" class="tab_target">Now</a>
+                </div>
+            <div style="border-right: solid 1px;width: 33.33%; height: 44px;">
+           <a href="#tab_02" class="tab_target">Details</a>
+            </div>
+            <div style="width: 33.33%; height: 44px;">
+            <a href="#tab_03" class="tab_target">Forecast</a>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div style="display: flex; width: 300px; flex-direction: column;height: 390px;">
+        <div style="height:66px; border: solid 1px;">
+           <p> Added Location:</p>
+        </div>
+            <div style="height:322px;border-right: solid 1px;border-bottom: solid 1px;width: 100%;">
+                <div class="listcity">
+                </div>
+            </div>
+    </div>
+    </div>
+</div>
+            </section>
+            <script src="C:/Users/User/Documents/STRADA/1/my-strada/weather/weather.js"></script>
+			</body>
+           
