@@ -68,7 +68,6 @@ function renderDocument() {
 }
 
 function recursionRenderDocument(array, i = 0) {
-  console.log(i);
   if (i >= array.length) {
     return;
   }
