@@ -100,14 +100,31 @@ function render() {
 
 	let cityDivText = CITY_DIV.textContent;
 	let jsonParseLs = storage.getFavoriteCities();
+	let lengthArray = jsonParseLs.length;
 
-	for (let key of jsonParseLs) {
+	recursion(jsonParseLs, lengthArray);
+	/*for (let key of jsonParseLs) {
 		let city = key;
 		displayAddedLocations(city);
-	}
+	}*/
 
 	storage.saveCurrentCity(cityDivText);
 	changeColorHeart();
+}
+
+
+function recursion(jsonParseLs, lengthArray) {
+
+	//console.log(jsonParseLs);
+	if (lengthArray === 0) {
+		console.log(jsonParseLs[lengthArray])
+		return displayAddedLocations(jsonParseLs[lengthArray]);
+	} else if (lengthArray > 0) {
+
+		console.log(jsonParseLs[lengthArray]);
+		displayAddedLocations(jsonParseLs[lengthArray]);
+		return recursion(jsonParseLs, lengthArray - 1);
+	}
 }
 
 function changLocalStorage() {
