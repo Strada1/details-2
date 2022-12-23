@@ -24,12 +24,13 @@ class NextRequest {
 const nextRequest = new NextRequest();
 
 async function formHandler(event) {
+  event.preventDefault();
+
   if(nextRequest.checkTime()){
     return render.showError(nextRequest.getTimeLeft());
   }
   nextRequest.updateTime();
 
-  event.preventDefault();
   let input = event.target.querySelector(`.${WEATHER_CLASS.SEARCH_INPUT}`);
   let inputValue = input.value;
   if (inputValue === "") return;
@@ -42,25 +43,24 @@ function cityHandler(event) {
   if (target.className !== WEATHER_CLASS.ADD_CITY) return;
   let city = target.previousElementSibling.textContent;
   storage.addOrRemoveCity(city);
-  render.allInfo();
-  render.fillHeart(target);
+  render.allInfo(city);
 }
 
 function favouritesHandler(event) {
+  let target = event.target;
+  if (target.className === WEATHER_CLASS.FAVOURITES_REMOVE) {
+    let city = target.closest(`.${WEATHER_CLASS.FAVOURITES_CITY}`).textContent;
+    storage.addOrRemoveCity(city);
+    render.allInfo(city);
+  }
+
   if(nextRequest.checkTime()){
     return render.showError(nextRequest.getTimeLeft());
   }
   nextRequest.updateTime();
   
-  let target = event.target;
   if (target.className === WEATHER_CLASS.FAVOURITES_CITY)
     createWeatherCity(target.textContent);
-
-  if (target.className === WEATHER_CLASS.FAVOURITES_REMOVE) {
-    let city = target.closest(`.${WEATHER_CLASS.FAVOURITES_CITY}`).textContent;
-    storage.addOrRemoveCity(city);
-    render.allInfo();
-  }
 }
 
 function buttonHandler(event) {

@@ -15,5 +15,3 @@ UI_ELEMENT.FAVOURITES.addEventListener("click", favouritesHandler);
 
 createWeatherCity();
 render.listCity();
-
-

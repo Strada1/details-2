@@ -15,12 +15,13 @@ const render = {
     activeButton.classList.remove("-active");
     this.activeTab = button.dataset.tab;
     button.classList.add("-active");
+
     tabs.changeActiveTab(this.activeTab);
     this.infoWindow();
   },
   createTabs: function(){
-    let isFavouriteCity = storage.checkCity(this.weatherNow.name);
-    tabs.createTabNow(this.weatherNow, isFavouriteCity);
+    let favouriteCity = storage.checkCity(this.weatherNow.name);
+    tabs.createTabNow(this.weatherNow, favouriteCity);
     tabs.createTabDetails(this.weatherNow);
     tabs.createTabForecast(this.weatherForecast);
   },
@@ -33,13 +34,17 @@ const render = {
     let cities = storage.getCities();
     cities.forEach((item) => UI_ELEMENT.FAVOURITES.prepend(createCity(item)));
   },
-  allInfo: function () {
+  allInfo: function (city) {
     this.infoWindow();
     this.listCity();
+    if(city === this.weatherNow.name){
+      this.fillHeart()
+    }
   },
-  fillHeart: function(target){
+  fillHeart: function(){
+    let heartImg = document.querySelector('.now__add-city')
     let isFavouriteCity = storage.checkCity(this.weatherNow.name);
-    target.src = isFavouriteCity ? HEART.FILL : HEART.EMPTY;
+    heartImg.src = isFavouriteCity ? HEART.FILL : HEART.EMPTY;
   },
   showError: function (message) {
     let messageContainer = document.body.querySelector(".main__error");
@@ -48,7 +53,7 @@ const render = {
     textError.textContent = message;
     messageContainer.append(textError);
     document.body.querySelector(".main").append(messageContainer);
-    setTimeout(() => (messageContainer.textContent = ""), 2000);
+    setTimeout(() => (textError.remove()), 2000);
   },
 };
 

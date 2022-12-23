@@ -8,9 +8,11 @@ export class Tabs {
     this.forecast = document.createElement("div");
     this.activeTab = this.now;
   }
+  
   changeActiveTab(activeTab) {
     this.activeTab = this[activeTab.toLowerCase()];
   }
+
   createTabNow({ temperature, name, weather }, favouriteCity) {
     this.now.textContent = '';
     this.now.className = WEATHER_CLASS.NOW;
@@ -41,6 +43,7 @@ export class Tabs {
     city.append(nameCity, addCity);
     this.now.append(temp, img, city);
   }
+
   createTabDetails({
     name,
     temperature,
@@ -79,6 +82,7 @@ export class Tabs {
     );
     this.details.append(city, listDetails);
   }
+
   createTabForecast({ city: { name }, list }) {
     this.forecast.textContent = '';
     this.forecast.className = WEATHER_CLASS.FORECAST;
@@ -95,6 +99,7 @@ export class Tabs {
     listCard.append(...cards);
     this.forecast.append(city, listCard);
   }
+
   createCardForecast({ dt_txt, weather, main: { temp, feels_like } }) {
     let card = document.createElement("div");
     card.className = "card-weather";
@@ -127,5 +132,3 @@ export class Tabs {
 
 const getImageURL = (iconCode) =>
   `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
-
-// export { createTabNow, createTabDetails, createTabForecast };
