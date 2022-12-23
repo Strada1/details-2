@@ -110,7 +110,6 @@ function render() {
 
 function recursion(jsonParseLs, lengthArray) {
 	if (lengthArray === 0) {
-		console.log(jsonParseLs[lengthArray])
 		return displayAddedLocations(jsonParseLs[lengthArray]);
 
 	} else if (lengthArray > 0) {
