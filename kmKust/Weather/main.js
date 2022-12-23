@@ -122,6 +122,7 @@ function recursion(jsonParseLs, lengthArray) {
 	} else if (lengthArray > 0) {
 
 		console.log(jsonParseLs[lengthArray]);
+
 		displayAddedLocations(jsonParseLs[lengthArray]);
 		return recursion(jsonParseLs, lengthArray - 1);
 	}
