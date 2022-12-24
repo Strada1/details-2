@@ -1,10 +1,11 @@
 "use script"
 
-const weatherButtons = document.querySelector('.screens1');
-const weatherButtonAll = Array.from( document.querySelectorAll('.weather__button'));
-const weatherTabs = document.querySelector('.weather__tabs');
-const weatherTabAll = document.querySelectorAll('.weather__tab');
-weatherButtons.addEventListener("click", function (event) {
+import { ELEMENTS } from "./uiElements.js";
+import { TABS } from "./uiElements.js";
+
+
+
+TABS.weatherButtons.addEventListener("click", function (event) {
 	const clickButton = event.target
 	if (checkClickTabs(clickButton)){
 		changeTabs(clickButton)
@@ -18,13 +19,13 @@ function checkClickTabs(clickButton) {
 }
 
 function changeTabs(clickButton) {
-	const activeButton = weatherButtons.querySelector('.weather__button.-active');
+	const activeButton = TABS.weatherButtons.querySelector('.weather__button.-active');
 	activeButton.classList.remove("-active")
 	clickButton.classList.add("-active")
-	const indexClickButton = weatherButtonAll.findIndex(item => item === clickButton)
-	const activeTab = weatherTabs.querySelector('.weather__tab.-active');
+	const indexClickButton = TABS.weatherButtonAll.findIndex(item => item === clickButton)
+	const activeTab = TABS.weatherTabs.querySelector('.weather__tab.-active');
 	activeTab.classList.remove("-active");
-	const newActiveTab = weatherTabAll[indexClickButton];
+	const newActiveTab = TABS.weatherTabAll[indexClickButton];
 	newActiveTab.classList.add("-active");
 }
 
@@ -50,22 +51,14 @@ storage.saveCurrentCity = function(value){
 // //поиск города
 
 const serverUrl = 'https://api.openweathermap.org/data/2.5/weather';
-let inpCity = document.getElementById('inpCity');
-const searchCity = document.getElementById('searchCity');
-
-const listDetails = document.querySelector('.list_details');
-const temper = document.getElementById('temp');
-const city = document.getElementById('cityCurrentName');
-const imageTemp = document.querySelector('.imageTemp img');
-
 let currentCity = storage.getCurrentCity();
 
 cityTemp();
 
 async function cityTemp (){
-    let cityName = `${inpCity.value}`;
+    let cityName = `${ELEMENTS.inpCity.value}`;
 //     let cityName2 = `${inpCity2.value}`;
-    if(inpCity.value == ""){
+    if(ELEMENTS.inpCity.value == ""){
         storage.getCurrentCity
     }
     else{
@@ -93,22 +86,22 @@ async function cityTemp (){
                 0: {main}
             },name} = jss;
 
-            temper.textContent = `${Math.floor(temp - 273)}°`;
-            city.textContent = name;
-            imageTemp.src = `https://openweathermap.org/img/wn/${jss.weather[0]['icon']}@4x.png`
+            ELEMENTS.temper.textContent = `${Math.floor(temp - 273)}°`;
+            ELEMENTS.city.textContent = name;
+            ELEMENTS.imageTemp.src = `https://openweathermap.org/img/wn/${jss.weather[0]['icon']}@4x.png`
             currentCity = name;
             storage.saveCurrentCity(currentCity);
 
             
             document.querySelector('.chosenCity').textContent = name;
-            listDetails.firstElementChild.textContent = `Temperature: ${Math.floor(temp - 273)}°`;
-            listDetails.children[1].textContent = `Feels like: ${Math.floor(feels_like - 273)}°`;
-            listDetails.children[2].textContent = `Weather: ${main}`;
-            listDetails.children[3].textContent = `Sunrise: ${new Date(sunrise * 1000).getHours()}:${new Date(sunrise * 1000).getMinutes()}`;
-            listDetails.children[4].textContent = `Sunset: ${new Date(sunset * 1000).getHours()}:${new Date(sunset * 1000).getMinutes()}`;
+            ELEMENTS.listDetails.firstElementChild.textContent = `Temperature: ${Math.floor(temp - 273)}°`;
+            ELEMENTS.listDetails.children[1].textContent = `Feels like: ${Math.floor(feels_like - 273)}°`;
+            ELEMENTS.listDetails.children[2].textContent = `Weather: ${main}`;
+            ELEMENTS.listDetails.children[3].textContent = `Sunrise: ${new Date(sunrise * 1000).getHours()}:${new Date(sunrise * 1000).getMinutes()}`;
+            ELEMENTS.listDetails.children[4].textContent = `Sunset: ${new Date(sunset * 1000).getHours()}:${new Date(sunset * 1000).getMinutes()}`;
         
             
-        let fav = [...favouriteCities].find(item => item == city.textContent);
+        let fav = [...favouriteCities].find(item => item == ELEMENTS.city.textContent);
         if(fav){
             svg.classList.add('filled');
         }
@@ -150,7 +143,6 @@ let favouriteCities = new Set();
 // const favouriteCities = storage.getFavoriteCities();
 
 function pushCity(newTask){
-
     // newTask = {
     //     name : newTask,
     // };
@@ -171,7 +163,7 @@ function deleteCity(task){
 
 like.addEventListener('click', function(){
     if (favouriteCities.size === 0){
-        pushCity(city.textContent);
+        pushCity(ELEMETNS.city.textContent);
         svg.classList.add('filled');
         render();
         return;
@@ -180,17 +172,16 @@ like.addEventListener('click', function(){
         let fav = [...favouriteCities].find(item => item == city.textContent);
             if(fav){
                 console.log('gg');
-                deleteCity(city.textContent);
+                deleteCity(ELEMENTS.city.textContent);
                 svg.classList.remove('filled');
                 render();          
             }
             else{
-            
-                pushCity(city.textContent);
+                pushCity(ELEMENTS.city.textContent);
                 svg.classList.add('filled');
                 render();
             }
-
+            console.log([...favouriteCities])
 })
 
 render();
@@ -260,24 +251,24 @@ function addCity(favCity){
                         0: {main}
                     },name} = response;
     
-                    temper.textContent = `${Math.floor(temp - 273)}°`;
-                    city.textContent = name;
-                    imageTemp.src = `https://openweathermap.org/img/wn/${response.weather[0]['icon']}@4x.png`
+                    ELEMENTS.temper.textContent = `${Math.floor(temp - 273)}°`;
+                    ELEMENTS.city.textContent = name;
+                    ELEMENTS.imageTemp.src = `https://openweathermap.org/img/wn/${response.weather[0]['icon']}@4x.png`
                     currentCity = name;
                     storage.saveCurrentCity(currentCity);
     
                 
                     document.querySelector('.chosenCity').textContent = name;
-                    listDetails.firstElementChild.textContent = `Temperature: ${Math.floor(temp - 273)}°`;
-                    listDetails.children[1].textContent = `Feels like: ${Math.floor(feels_like - 273)}°`;
-                    listDetails.children[2].textContent = `Weather: ${main}`;
-                    listDetails.children[3].textContent = `Sunrise: ${new Date(sunrise * 1000).getHours()}:${new Date(sunrise * 1000).getMinutes()}`;
-                    listDetails.children[4].textContent = `Sunset: ${new Date(sunset * 1000).getHours()}:${new Date(sunset * 1000).getMinutes()}`;
+                    ELEMENTS.listDetails.firstElementChild.textContent = `Temperature: ${Math.floor(temp - 273)}°`;
+                    ELEMENTS.listDetails.children[1].textContent = `Feels like: ${Math.floor(feels_like - 273)}°`;
+                    ELEMENTS.listDetails.children[2].textContent = `Weather: ${main}`;
+                    ELEMENTS.listDetails.children[3].textContent = `Sunrise: ${new Date(sunrise * 1000).getHours()}:${new Date(sunrise * 1000).getMinutes()}`;
+                    ELEMENTS.listDetails.children[4].textContent = `Sunset: ${new Date(sunset * 1000).getHours()}:${new Date(sunset * 1000).getMinutes()}`;
                     
 
                     
                       
-                    let fav = [...favouriteCities].find(item => item == city.textContent);
+                    let fav = [...favouriteCities].find(item => item == ELEMENTS.city.textContent);
                         if(fav){
                             svg.classList.add('filled');
                             }
