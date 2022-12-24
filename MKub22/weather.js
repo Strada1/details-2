@@ -3,6 +3,7 @@
 import { ELEMENTS } from "./uiElements.js";
 import { TABS } from "./uiElements.js";
 import { checkClickTabs, changeTabs} from "./changingTabs.js";
+import { cityTemp } from "./api.js";
 
 
 TABS.weatherButtons.addEventListener("click", function (event) {
@@ -32,79 +33,9 @@ storage.saveCurrentCity = function(value){
 
 // //поиск города
 
-const serverUrl = 'https://api.openweathermap.org/data/2.5/weather';
-let currentCity = storage.getCurrentCity();
+export let obj = {currentCity : storage.getCurrentCity()};
 
 cityTemp();
-
-async function cityTemp (){
-    let cityName = `${ELEMENTS.inpCity.value}`;
-//     let cityName2 = `${inpCity2.value}`;
-    if(ELEMENTS.inpCity.value == ""){
-        storage.getCurrentCity
-    }
-    else{
-        currentCity = cityName;
-    }
-    try{
-    
-    const apiKey = 'f660a2fb1e4bad108d6160b7f58c555f';
-    const url = `${serverUrl}?q=${currentCity}&appid=${apiKey}`;
-
-    
-    let response = await fetch(url);
-    
-    // response.onload = () => resolve(response);
-    // response.onerror = () => reject(new Error(`Ошибка загрузки скрипта ${url}`));
-    let jss = await response.json();
-
-    // console.log(jss)
-
-    // jss => {
-         const { 
-            main: {temp, feels_like },
-            sys: {sunrise, sunset},
-            weather:{
-                0: {main}
-            },name} = jss;
-
-            ELEMENTS.temper.textContent = `${Math.floor(temp - 273)}°`;
-            ELEMENTS.city.textContent = name;
-            ELEMENTS.imageTemp.src = `https://openweathermap.org/img/wn/${jss.weather[0]['icon']}@4x.png`
-            currentCity = name;
-            storage.saveCurrentCity(currentCity);
-
-            
-            document.querySelector('.chosenCity').textContent = name;
-            ELEMENTS.listDetails.firstElementChild.textContent = `Temperature: ${Math.floor(temp - 273)}°`;
-            ELEMENTS.listDetails.children[1].textContent = `Feels like: ${Math.floor(feels_like - 273)}°`;
-            ELEMENTS.listDetails.children[2].textContent = `Weather: ${main}`;
-            ELEMENTS.listDetails.children[3].textContent = `Sunrise: ${new Date(sunrise * 1000).getHours()}:${new Date(sunrise * 1000).getMinutes()}`;
-            ELEMENTS.listDetails.children[4].textContent = `Sunset: ${new Date(sunset * 1000).getHours()}:${new Date(sunset * 1000).getMinutes()}`;
-        
-            
-        let fav = [...favouriteCities].find(item => item == ELEMENTS.city.textContent);
-        if(fav){
-            svg.classList.add('filled');
-        }
-        else{
-            svg.classList.remove('filled');
-        }
-        console.log(jss);
-    // }
-} catch(err){
-    alert(err);
-}
-
-
-    // response
-    // .then(
-    //     response => {
-          
-    // }
-    
-    // ).catch(alert)
-}
 
 searchCity.addEventListener('click', function(e){
     e.preventDefault();
@@ -125,9 +56,7 @@ let favouriteCities = new Set();
 // const favouriteCities = storage.getFavoriteCities();
 
 function pushCity(newTask){
-    // newTask = {
-    //     name : newTask,
-    // };
+
     list.push(newTask);
     favouriteCities.add(newTask);
     storage.saveFavoriteCities([...favouriteCities]);
@@ -145,13 +74,13 @@ function deleteCity(task){
 
 like.addEventListener('click', function(){
     if (favouriteCities.size === 0){
-        pushCity(ELEMETNS.city.textContent);
+        pushCity(ELEMENTS.city.textContent);
         svg.classList.add('filled');
         render();
         return;
     }
 
-        let fav = [...favouriteCities].find(item => item == city.textContent);
+        let fav = [...favouriteCities].find(item => item == ELEMENTS.city.textContent);
             if(fav){
                 console.log('gg');
                 deleteCity(ELEMENTS.city.textContent);
@@ -236,8 +165,8 @@ function addCity(favCity){
                     ELEMENTS.temper.textContent = `${Math.floor(temp - 273)}°`;
                     ELEMENTS.city.textContent = name;
                     ELEMENTS.imageTemp.src = `https://openweathermap.org/img/wn/${response.weather[0]['icon']}@4x.png`
-                    currentCity = name;
-                    storage.saveCurrentCity(currentCity);
+                    obj.currentCity = name;
+                    storage.saveCurrentCity(obj.currentCity);
     
                 
                     document.querySelector('.chosenCity').textContent = name;
@@ -262,5 +191,4 @@ function addCity(favCity){
     })
 }
 
-//переключение табов
-
+export{storage, favouriteCities, svg};
