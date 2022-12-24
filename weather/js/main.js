@@ -2,7 +2,11 @@ import { ELEMENT, CLASS } from './ui.js';
 import { API, ERROR } from './data.js';
 import { render } from './render.js';
 import { parseWeather, parseForecast, WeatherData } from './conversion.js';
-import { changeFavoritesList, currentCity } from './favorites.js';
+import {
+  changeFavoritesList,
+  currentCity,
+  favoritesList,
+} from './favorites.js';
 
 document.addEventListener('DOMContentLoaded', handleContentLoaded);
 ELEMENT.BUTTONS_WRAPPER.addEventListener('click', changeActiveButton);
@@ -11,7 +15,7 @@ ELEMENT.FORM.addEventListener('submit', handleSendingData);
 
 function handleContentLoaded() {
   getWeatherData(currentCity);
-  render();
+  render(favoritesList);
 }
 
 function handleSendingData(event) {

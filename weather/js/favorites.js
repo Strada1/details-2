@@ -25,7 +25,7 @@ function changeFavoritesList() {
   favoritesList.delete(city) || favoritesList.add(city);
   storage.saveFavoritesList(favoritesList);
   updateLike(city);
-  render();
+  render(favoritesList);
 }
 
 export { currentCity, favoritesList, changeFavoritesList, storage };

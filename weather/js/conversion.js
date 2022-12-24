@@ -38,9 +38,8 @@ function ForecastData(list) {
 const parseForecast = ({ list }, index = 0) => {
   const forecastData = new ForecastData(list[index]);
   createItemsForecast(forecastData);
-  index++;
-  if (index >= list.length) return;
-  parseForecast({ list }, index);
+  if (index >= list.length - 1) return;
+  parseForecast({ list }, index + 1);
 };
 
 const findImageForState = (state) => {
@@ -75,9 +74,7 @@ const convertTimestamp = (timestamp, option) => {
     const timestampData = new TimestampData(timestamp);
     switch (option) {
       case EXTRA_VARIABLE.TIME:
-        const time = `${padTo2Digits(timestampData.hours)}:${padTo2Digits(
-          timestampData.minutes
-        )}`;
+        const time = `${padTo2Digits(timestampData.hours)}:${padTo2Digits(timestampData.minutes)}`;
         return time;
       case EXTRA_VARIABLE.DATE:
         const date = `${timestampData.day} ${timestampData.month}`;

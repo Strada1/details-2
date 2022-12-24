@@ -3,22 +3,21 @@ import { ELEMENT, CLASS } from './ui.js';
 import { favoritesList } from './favorites.js';
 import { getWeatherData } from './main.js';
 
-const render = (cities = favoritesList.values(), city, index = 0) => {
-  index++;
-  if (index > favoritesList.size + 1) return;
-  index === 1
+const render = (favoritesList, index = -1) => {
+  const cities = Array.from(favoritesList);
+  if (index >= cities.length) return;
+  index === -1
     ? ELEMENT.FAVORITES_LIST.replaceChildren()
-    : createFavoriteCity(city);
-  render(cities, cities.next().value, index);
+    : createFavoriteCity(cities[index]);
+  render(favoritesList, index + 1);
 };
 
 const clearForecastList = () => ELEMENT.TAB_LIST_FORECAST.replaceChildren();
 
 const updateCityName = (city, index = 0) => {
   ELEMENT.ACTIVE_CITY_LIST[index].textContent = city;
-  index++;
-  if (index >= ELEMENT.ACTIVE_CITY_LIST.length) return;
-  updateCityName(city, index);
+  if (index >= ELEMENT.ACTIVE_CITY_LIST.length - 1) return;
+  updateCityName(city, index + 1);
   updateLike(city);
   clearForecastList();
 };
@@ -31,9 +30,8 @@ const updateLike = (city) => {
 
 const updateTemperature = (temperature, feelsLike, index = 0) => {
   ELEMENT.TEMPERATURE[index].textContent = `${temperature}${EXTRA_VARIABLE.DEGREE_SYMBOL}`;
-  index++;
-  if (index >= ELEMENT.TEMPERATURE.length) return;
-  updateTemperature(temperature, feelsLike, index);
+  if (index >= ELEMENT.TEMPERATURE.length - 1) return;
+  updateTemperature(temperature, feelsLike, index + 1);
   ELEMENT.FEELS_LIKE.textContent = `${feelsLike}${EXTRA_VARIABLE.DEGREE_SYMBOL}`;
 };
 
