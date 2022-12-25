@@ -25,9 +25,16 @@ const CURRENT_TAB_TEXT = {
 	FORECAST: 'Forecast'
 }
 
-!(function chooseTab() {
-	let currentTab = storage.getCurrentTab();
+document.addEventListener('domContentLoaded', handleContentLoaded);
 
+function handleContentLoaded() {
+	chooseTab();
+	setCurrentCityUI();
+	render();
+}
+
+function chooseTab() {
+	let currentTab = storage.getCurrentTab();
 	switch (currentTab) {
 		case CURRENT_TAB_TEXT.NOW:
 			document.querySelector('.tabs__item:nth-child(1)').click();
@@ -41,12 +48,12 @@ const CURRENT_TAB_TEXT = {
 			document.querySelector('.tabs__item:nth-child(3)').click();
 			return;
 	}
-})()
+}
 
-!(function setCurrentCityUI() {
+function setCurrentCityUI() {
 	let cityName = storage.getCurrentCity();
 	cityDataSearch(cityName);
-})()
+}
 
 async function cityDataSearch(cityName) {
 	const serverUrl = 'http://api.openweathermap.org/data/2.5/weather';
@@ -97,24 +104,23 @@ const CityData = ({ name, main, weather, sys }) => {
 
 function render() {
 	UL_CITIES.replaceChildren();
-
 	let cityDivText = CITY_DIV.textContent;
 	let jsonParseLs = storage.getFavoriteCities();
 	let lengthArray = jsonParseLs.length - 1;
 
-	recursion(jsonParseLs, lengthArray);
+	getCitysName(jsonParseLs, lengthArray);
 
 	storage.saveCurrentCity(cityDivText);
 	changeColorHeart();
 }
 
-function recursion(jsonParseLs, lengthArray) {
+function getCitysName(jsonParseLs, lengthArray) {
 	if (lengthArray === 0) {
 		return displayAddedLocations(jsonParseLs[lengthArray]);
 
 	} else if (lengthArray > 0) {
 		displayAddedLocations(jsonParseLs[lengthArray]);
-		return recursion(jsonParseLs, lengthArray - 1);
+		return getCitysName(jsonParseLs, lengthArray - 1);
 	}
 }
 
@@ -125,7 +131,7 @@ function changLocalStorage() {
 
 	if (cityInArray) {
 		jsonParseLs = jsonParseLs.filter(item => item !== cityDivText);
-	} else if (!cityInArray) {
+	} else {
 		jsonParseLs.push(cityDivText);
 	}
 
@@ -148,15 +154,14 @@ FORM.addEventListener('submit', event => {
 UL_CITIES.addEventListener('click', event => {
 	let clickCity = event.target.closest('.liCity');
 	let cityName = clickCity.textContent;
-
-	if (clickCity) {
-		cityDataSearch(cityName);
-	} else if (!clickCity) {
-	}
+	cityDataSearch(cityName);
 })
 
 CURRENT_TAB.addEventListener('click', event => {
 	let clickCurrentTab = event.target.closest('.tabs__item');
 	storage.saveCurrentTab(clickCurrentTab);
 })
-render()
+
+
+
+
