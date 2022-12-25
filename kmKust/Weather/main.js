@@ -25,7 +25,7 @@ const CURRENT_TAB_TEXT = {
 	FORECAST: 'Forecast'
 }
 
-document.addEventListener('domContentLoaded', handleContentLoaded);
+document.addEventListener('DOMContentLoaded', handleContentLoaded);
 
 function handleContentLoaded() {
 	chooseTab();
