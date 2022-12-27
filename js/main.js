@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 import { UI_ELEMENTS, showWeatherNow, showWeatherDetails } from "./ui.js";
 import { addStorageCurrentCity, getStorageCurrentCity, addStorageFavoriteCities, getStorageFavoriteCities } from "./storage.js";
 window.location.hash = "now";
@@ -106,3 +107,5 @@ export function convertTime(time) {
 getWeather();
 getStorageFavoriteCities();
 renderFavoriteCity();
+
+console.log(format(new Date(), "'Today is a' eeee"));
