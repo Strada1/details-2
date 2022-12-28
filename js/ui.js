@@ -1,4 +1,4 @@
-import { convertTime } from "./main.js";
+import { convertTime } from './main.js';
 
 export const UI_ELEMENTS = {
   FAVORITE_LIST: document.querySelector('.weather__favorites-list'),
@@ -15,22 +15,22 @@ export const UI_ELEMENTS = {
   DETAILS_SUNRISE: document.querySelector('.details__sunrise-value'),
   DETAILS_SUNSET: document.querySelector('.details__sunset-value'),
   DETAILS_CITY: document.querySelector('.details__title'),
-}
+};
 
 UI_ELEMENTS.TABS.forEach((item) => {
   item.addEventListener('click', () => {
     UI_ELEMENTS.TABS.forEach((item) => {
-      item.classList.remove('tabs-item--active')
-    })
-    item.classList.add('tabs-item--active')
-  })
-})
+      item.classList.remove('tabs-item--active');
+    });
+    item.classList.add('tabs-item--active');
+  });
+});
 
 export function showWeatherNow(data) {
   const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
   UI_ELEMENTS.NOW_TEMPERATURE.textContent = data.main.temp.toFixed(1);
   UI_ELEMENTS.NOW_CITY.textContent = data.name;
-  UI_ELEMENTS.NOW_ICON.setAttribute('src', iconUrl)
+  UI_ELEMENTS.NOW_ICON.setAttribute('src', iconUrl);
 }
 
 export function showWeatherDetails(data) {

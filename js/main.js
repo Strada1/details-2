@@ -1,7 +1,7 @@
-import { format } from 'date-fns'
-import { UI_ELEMENTS, showWeatherNow, showWeatherDetails } from "./ui.js";
-import { addStorageCurrentCity, getStorageCurrentCity, addStorageFavoriteCities, getStorageFavoriteCities } from "./storage.js";
-window.location.hash = "now";
+import { format } from 'date-fns';
+import { UI_ELEMENTS, showWeatherNow, showWeatherDetails } from './ui.js';
+import { addStorageCurrentCity, getStorageCurrentCity, addStorageFavoriteCities, getStorageFavoriteCities } from './storage.js';
+window.location.hash = 'now';
 
 const SERVER_URL = 'http://api.openweathermap.org/data/2.5/weather';
 const API_KEY = 'f660a2fb1e4bad108d6160b7f58c555f';
@@ -21,18 +21,18 @@ function addCityFavorite(cityName) {
     renderFavoriteCity();
   } else {
     favoriteCityList.push(cityName);
-    addStorageFavoriteCities(favoriteCityList)
+    addStorageFavoriteCities(favoriteCityList);
     renderFavoriteCity();
   }
 }
 
 function deleteFavoriteCity() {
-  const cityName = this.parentNode.textContent
+  const cityName = this.parentNode.textContent;
   this.parentNode.remove();
   favoriteCityList = favoriteCityList.filter(item => {
     return item != cityName;
   });
-  addStorageFavoriteCities(favoriteCityList)
+  addStorageFavoriteCities(favoriteCityList);
 }
 
 function renderFavoriteCity() {
@@ -54,7 +54,7 @@ function renderFavoriteCity() {
     item.addEventListener('click', () => {
       getWeather(element);
       addStorageCurrentCity(element);
-    })
+    });
   });
 }
 
@@ -70,17 +70,17 @@ function checkCityFavorite(cityName) {
 UI_ELEMENTS.FORM.addEventListener('submit', (event) => {
   event.preventDefault();
   const cityName = UI_ELEMENTS.INPUT_FORM.value;
-  addStorageCurrentCity(cityName)
+  addStorageCurrentCity(cityName);
   getWeather(cityName);
   event.target.reset();
-})
+});
 
 async function getWeather(cityName) {
   let city;
   if (!cityName) {
     city = getStorageCurrentCity() || 'Aktobe';
   } else {
-    city = cityName
+    city = cityName;
   }
 
   const url = `${SERVER_URL}?q=${city}&appid=${API_KEY}&units=metric`;
@@ -108,4 +108,4 @@ getWeather();
 getStorageFavoriteCities();
 renderFavoriteCity();
 
-console.log(format(new Date(), "'Today is a' eeee"));
+console.log(format(new Date(), '\'Today is a\' eeee'));
