@@ -1,0 +1,25 @@
+{
+  "name": "strada",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tinkoff/eslint-config": "^1.50.1",
+    "eslint": "^8.7.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "parcel": "^2.8.2",
+    "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "date-fns": "^2.29.3",
+    "js-cookie": "^3.0.1"
+  }
+}
