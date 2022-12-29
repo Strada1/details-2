@@ -76,13 +76,7 @@ UI_ELEMENTS.FORM.addEventListener('submit', (event) => {
 });
 
 async function getWeather(cityName) {
-  let city;
-  if (!cityName) {
-    city = getStorageCurrentCity() || 'Aktobe';
-  } else {
-    city = cityName;
-  }
-
+  const city = cityName || getStorageCurrentCity() || 'Aktobe';;
   const url = `${SERVER_URL}?q=${city}&appid=${API_KEY}&units=metric`;
 
   try {

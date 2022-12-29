@@ -600,9 +600,7 @@ function checkCityFavorite(cityName) {
     event.target.reset();
 });
 async function getWeather(cityName) {
-    let city;
-    if (!cityName) city = (0, _storageJs.getStorageCurrentCity)() || "Aktobe";
-    else city = cityName;
+    const city = cityName || (0, _storageJs.getStorageCurrentCity)() || "Aktobe";
     const url = `${SERVER_URL}?q=${city}&appid=${API_KEY}&units=metric`;
     try {
         const promise = await fetch(url);
@@ -3548,10 +3546,11 @@ parcelHelpers.export(exports, "getStorageCurrentCity", ()=>getStorageCurrentCity
 parcelHelpers.export(exports, "addStorageFavoriteCities", ()=>addStorageFavoriteCities);
 parcelHelpers.export(exports, "getStorageFavoriteCities", ()=>getStorageFavoriteCities);
 function addStorageCurrentCity(cityName) {
-    localStorage.setItem("currentCity", cityName);
+    document.cookie = `currentCity = ${cityName}; max-age=3600`;
 }
 function getStorageCurrentCity() {
-    return localStorage.getItem("currentCity");
+    let arrCookie = document.cookie.split("=");
+    return arrCookie[1];
 }
 function addStorageFavoriteCities(array) {
     const json = JSON.stringify(array);

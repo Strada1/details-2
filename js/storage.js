@@ -1,9 +1,10 @@
 export function addStorageCurrentCity(cityName) {
-  localStorage.setItem('currentCity', cityName);
+  document.cookie = `currentCity = ${cityName}; max-age=3600`;
 }
 
 export function getStorageCurrentCity() {
-  return localStorage.getItem('currentCity');
+  let arrCookie = document.cookie.split('=');
+  return arrCookie[1];
 }
 
 export function addStorageFavoriteCities(array) {
