@@ -3,7 +3,7 @@ import { HttpError } from "./error.js";
 import {
   renderDetailsPage,
   renderNowPage,
-  addFromLocalStorage,
+  addFromCookies,
   mainText,
 } from "./render.js";
 
@@ -42,7 +42,7 @@ form.addEventListener("submit", (e) => {
   fetchData();
 });
 
-addFromLocalStorage();
+addFromCookies();
 detailsButton.addEventListener("click", () => {
   detailsButton.classList.add("active");
   nowButton.classList.remove("active");

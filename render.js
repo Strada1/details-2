@@ -1,8 +1,10 @@
+import Cookies from 'js-cookie'
 import { getCorrectTime, getCurrentWeather } from "./getCorrectValue.js";
 import { fetchData } from "./main.js";
 const content = document.querySelector(".left_side_content");
 const div = document.querySelector(".list");
 const localStorageCities = JSON.parse(localStorage.getItem("citys"));
+const cookiesCities = JSON.parse(Cookies.get('cities'))
 let favCities = [];
 export let mainText;
 export function renderDetailsPage(weatherObject) {
@@ -82,11 +84,14 @@ export function renderNowPage(dataObject) {
         (city) => city !== footerSpan.textContent
       );
       favCities = [...newFavCities];
+      console.log(favCities)
       localStorage.setItem("citys", JSON.stringify(favCities));
+      Cookies.set('cities',favCities)
+      console.log(document.cookie)
+      console.log(favCities)
       div.replaceChildren();
       favCities.map((city) => {
         const span = document.createElement("span");
-
         span.textContent = city;
         div.appendChild(span);
         span.addEventListener("click", (e) => {
@@ -99,10 +104,13 @@ export function renderNowPage(dataObject) {
       const isCityInArray = favCities.some(
         (city) => city === footerSpan.textContent
       );
-
+        console.log(isCityInArray,favCities)
       if (!isCityInArray) {
         favCities.push(footerSpan.textContent);
+        console.log(favCities)
         localStorage.setItem("citys", JSON.stringify(favCities));
+        Cookies.set('cities',JSON.stringify(favCities))
+        console.log(Cookies.get('cities'))
         favCities.map((city) => {
           spanCity.textContent = city;
           div.appendChild(spanCity);
@@ -117,9 +125,9 @@ export function renderNowPage(dataObject) {
   });
 }
 
-export function addFromLocalStorage() {
-  if (localStorageCities && localStorageCities.length > 0) {
-    favCities = [...localStorageCities];
+export function addFromCookies() {
+  if (cookiesCities && cookiesCities.length > 0) {
+    favCities = [...cookiesCities];
     favCities.map((city) => {
       const span = document.createElement("span");
 

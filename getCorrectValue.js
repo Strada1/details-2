@@ -1,10 +1,7 @@
+import { format } from 'date-fns';
 export function getCorrectTime(time) {
-  let date = new Date(time * 1000);
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-  let seconds = date.getSeconds();
-  if (hours < 10) hours = `0${date.getHours()}`;
-  let formattedTime = `${hours}:${minutes}:${seconds}`;
+  const date = new Date(time * 1000);
+  const formattedTime = format(date, 'H:mm:ss');
   return formattedTime;
 }
 
