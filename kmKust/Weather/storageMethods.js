@@ -19,8 +19,14 @@ export const storage = {
 
 	getFavoriteCities() {
 		let getLocalStorage = localStorage.getItem('favoriteCities')
-		let jsonParseLs = JSON.parse(getLocalStorage);
-		return jsonParseLs;
+		if (getLocalStorage === "") {
+			let jsonParseLs = JSON.parse([]);
+			return jsonParseLs;
+		} else {
+
+			let jsonParseLs = JSON.parse(getLocalStorage);
+			return jsonParseLs;
+		}
 	},
 
 	getCurrentTab() {

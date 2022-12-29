@@ -55,6 +55,7 @@ export function changeColorHeart() {
 		BTN_SAVE_CITY.style.backgroundImage = imgHeart;
 	} else if (cityInArray) {
 		BTN_SAVE_CITY.style.backgroundImage = imgHeartRed;
+
 	}
 }
 

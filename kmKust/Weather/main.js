@@ -27,10 +27,27 @@ const CURRENT_TAB_TEXT = {
 
 document.addEventListener('DOMContentLoaded', handleContentLoaded);
 
-function handleContentLoaded() {
-	chooseTab();
-	setCurrentCityUI();
-	render();
+async function handleContentLoaded() {
+	let localStorageLength = localStorage.length;
+	if (localStorageLength === 0) {
+		await defaultLocalStorage();
+		await chooseTab();
+		await setCurrentCityUI();
+		await render();
+	} else {
+		chooseTab();
+		setCurrentCityUI();
+		render();
+	}
+
+}
+//localStorage.clear()
+
+function defaultLocalStorage() {
+	localStorage.setItem('favoriteCities', JSON.stringify([]));
+	localStorage.setItem('currentCity', 'Moscow');
+	localStorage.setItem('currentTabs', 'Now');
+
 }
 
 function chooseTab() {
