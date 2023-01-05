@@ -12,7 +12,7 @@ export function renderDetails(value) {
     DETAILSBLOCK.TEMP.textContent = getCelsius(value.main.temp) + '℃';
     DETAILSBLOCK.FEEL.textContent = getCelsius(value.main.feels_like) + '℃';
     DETAILSBLOCK.WEATHER.textContent = value.weather[0].main;
-    DETAILSBLOCK.SUNRISE.textContent = getHumanHours(new Date(value.sys.sunrise * 1000));
-    DETAILSBLOCK.SUNSET.textContent = getHumanHours(new Date(value.sys.sunset * 1000));
+    DETAILSBLOCK.SUNRISE.textContent = getHumanHours(new Date(value.sys.sunrise));
+    DETAILSBLOCK.SUNSET.textContent = getHumanHours(new Date(value.sys.sunset));
 };
 

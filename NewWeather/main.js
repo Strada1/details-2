@@ -31,8 +31,6 @@ NOWBLOCKEL.HEART.addEventListener('click', () =>{
     heartHandler();
 });
 
-
-
 function formHandler() {
     toggleLike(FORMELEMENTS.CITY_INPUT.value);
     getRequest(serverUrl, FORMELEMENTS.CITY_INPUT.value);
