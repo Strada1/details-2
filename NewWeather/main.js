@@ -31,6 +31,8 @@ NOWBLOCKEL.HEART.addEventListener('click', () =>{
     heartHandler();
 });
 
+
+
 function formHandler() {
     toggleLike(FORMELEMENTS.CITY_INPUT.value);
     getRequest(serverUrl, FORMELEMENTS.CITY_INPUT.value);
@@ -43,35 +45,25 @@ function heartHandler() {
     showList();
 };
 
-function getRequest(link, cityName) {
-    fetch( `${link}?q=${cityName}&appid=${apiKey}`)
-    .then(response => {
-        if(response.ok) {
-            return response.json()
-        } else {
-            alert("Ошибка HTTP: " + response.status);
-        }
-        response.json()})
-    .then(data => {
-        renderData(data);
-        renderDetails(data);
-        storage.setCurrentCity(data.name);
-    });
-};
+async function getRequest(link, cityName) {
+    let response = await fetch( `${link}?q=${cityName}&appid=${apiKey}`);
+    let result = await response.json();
+    renderData(result);
+    renderDetails(result);
+    storage.setCurrentCity(result.name);
+}
 
-function getForecastRequest(link, cityName) {
-    fetch(`${link}?q=${cityName}&appid=${apiKey}`)
-    .then(response => response.json())
-    .then(result => {
-        let list = result.list;
-        let spliceList = list.splice(0, 5);
-        FORECASTBLOCKEL.CITY.textContent = result.city.name;
-        FORECASTBLOCKEL.BLOCK.innerHTML = '';
-        spliceList.forEach(function(item) {
-            createForecastEl(item);
-        });
+async function getForecastRequest(link, cityName) {
+    let response = await fetch(`${link}?q=${cityName}&appid=${apiKey}`);
+    let result = await response.json();
+    let list = result.list;
+    let spliceList = list.splice(0, 5);
+    FORECASTBLOCKEL.CITY.textContent = result.city.name;
+    FORECASTBLOCKEL.BLOCK.innerHTML = '';
+    spliceList.forEach(function(item) {
+        createForecastEl(item);
     });
-};
+}
 
 function createCityEl(name) {
     const newEl = document.createElement('li');
