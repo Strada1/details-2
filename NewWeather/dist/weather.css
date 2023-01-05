@@ -62,7 +62,7 @@ a{
     padding: 20px 26px 0px 14px;
 }
 .like{
-    background-image: url(Weather/img/Shape.svg);
+    background-image: url(img/Shape.svg);
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -72,7 +72,7 @@ a{
 }
 
 .heart {
-    background-image: url(Weather/img/heartBalck.png);
+    background-image: url(img/heartBalck.png);
     width: 30px;
     height: 30px;
     cursor: pointer;

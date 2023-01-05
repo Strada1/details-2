@@ -1,3 +1,5 @@
+import { format } from 'date-fns'
+
 function getCelsius(num) {
     try{
         if(isNaN(num)) throw new SyntaxError('Ошибка');
@@ -9,19 +11,13 @@ function getCelsius(num) {
 };
 
 function getHumanHours(date) {
-    const H = addZeroToNumber(date.getHours());
-    const M = addZeroToNumber(date.getMinutes());
-    return `${H}:${M}`
+    return format(new Date(date), 'HH:MM')
 };
 
 function dateTimeToHuman(value) {
     const day = value.getDate();
     const month = months[value.getMonth()];
     return `${day} ${month}`
-}
-
-function addZeroToNumber(value) {
-    return (value < 10) ? '0' + value : value
 }
 
 const months = [
@@ -31,4 +27,4 @@ const months = [
     "October","November","December"
 ];
 
-export {getCelsius, getHumanHours, dateTimeToHuman, months, addZeroToNumber};
+export {getCelsius, getHumanHours, dateTimeToHuman, months};

@@ -9,7 +9,7 @@ const FORMELEMENTS = {
 };
 
 const serverUrl= 'http://api.openweathermap.org/data/2.5/weather';
-const apiKey = 'f660a2fb1e4bad108d6160b7f58c555f';
+const apiKey = '0d8b1ccc4f47d75a3547f596bbe9594a';
 const forecastUrl = 'http://api.openweathermap.org/data/2.5/forecast';
 
 const NOWBLOCKEL = {
