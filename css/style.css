@@ -1,3 +1,40 @@
 body {
   background-color: rgb(218, 218, 218);
 }
+
+.js-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+.js-output-interval {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+.text {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+.js-input {
+  height: 25px;
+  margin-bottom: 10px;
+}
+
+.js-submit {
+  height: 20px;
+  margin-bottom: 20px;
+}
+
+.js-output {
+  font-size: 18px;
+}
