@@ -13,16 +13,11 @@ const storage = {
         return arr;
     },
     setCurrentCity: (value) => {
-        localStorage.setItem('currentCity', value);
+        document.cookie = `currentcity = ${value}; max-age=3600`;
     },
     getCurrentCity: () => {
-        let res;
-        if(localStorage.getItem('currentCity') !== null) {
-            res = localStorage.getItem('currentCity');
-        } else {
-            res = 'Moscow';
-        }
-        return res;
+        let res = document.cookie.split('=');
+        return res[1];
     },
 };
 

@@ -590,7 +590,7 @@ function createCityEl(name) {
     const newEl = document.createElement("li");
     newEl.className = "cityList";
     newEl.textContent = name;
-    newEl.addEventListener("click", function(item) {
+    newEl.addEventListener("click", function() {
         (0, _addDeleteJs.toggleLike)(name);
         getRequest((0, _variablesJs.serverUrl), name);
         getForecastRequest((0, _variablesJs.forecastUrl), name);
@@ -719,13 +719,11 @@ const storage = {
         return arr;
     },
     setCurrentCity: (value)=>{
-        localStorage.setItem("currentCity", value);
+        document.cookie = `currentcity = ${value}; max-age=3600`;
     },
     getCurrentCity: ()=>{
-        let res;
-        if (localStorage.getItem("currentCity") !== null) res = localStorage.getItem("currentCity");
-        else res = "Moscow";
-        return res;
+        let res = document.cookie.split("=");
+        return res[1];
     }
 };
 let listArr = new Set(storage.getFavCities());
