@@ -7,8 +7,6 @@ const UI = {
   OUTPUT_INTERVAL: document.querySelector('.js-output-interval')
 };
 
-UI.FORM.addEventListener('submit', calcDistanse);
-
 function calcDistanse() {
   event.preventDefault();
   const date = new Date(UI.INPUT.value);
@@ -30,3 +28,5 @@ function showInterval(interval) {
   const { years, months, days, hours, minutes, seconds } = interval;
   UI.OUTPUT_INTERVAL.textContent = `Years:${years} Months:${months} Days:${days} Hours:${hours} Minutes:${minutes} Seconds:${seconds}`;
 }
+
+UI.FORM.addEventListener('submit', calcDistanse);
