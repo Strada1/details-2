@@ -600,7 +600,7 @@ function checkCityFavorite(cityName) {
     event.target.reset();
 });
 async function getWeather(cityName) {
-    const city = cityName || (0, _storageJs.getStorageCurrentCity)() || "Aktobe";
+    const city = cityName ?? (0, _storageJs.getStorageCurrentCity)() ?? "Aktobe";
     const url = `${SERVER_URL}?q=${city}&appid=${API_KEY}&units=metric`;
     try {
         const promise = await fetch(url);
