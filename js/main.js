@@ -78,7 +78,6 @@ UI_ELEMENTS.FORM.addEventListener('submit', (event) => {
 async function getWeather(cityName) {
   const city = cityName ?? getStorageCurrentCity() ?? 'Aktobe';
   const url = `${SERVER_URL}?q=${city}&appid=${API_KEY}&units=metric`;
-
   try {
     const promise = await fetch(url);
     const data = await promise.json();
