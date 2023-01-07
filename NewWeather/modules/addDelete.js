@@ -18,20 +18,20 @@ function addToarr(name) {
     } catch(err) {
         console.log('Ошибка');
     }
-};
+}
 
 function toggleLike(name) {
     if(listArr.has(name)) {
         NOWBLOCKEL.HEART.className = 'heart';
-        localStorage.setItem('heart', 'heart')
+        localStorage.setItem('heart', 'heart');
     } else {
         NOWBLOCKEL.HEART.className = 'like';
-        localStorage.setItem('heart', 'like')
+        localStorage.setItem('heart', 'like');
     }
-};
+}
 
 if(localStorage.getItem('heart')) {
     NOWBLOCKEL.HEART.classList.add(localStorage.getItem('heart'));
-};
+}
 
 export  {addToarr, toggleLike};

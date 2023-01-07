@@ -1,7 +1,7 @@
 const TABS = {
     ALL_BTN: document.querySelectorAll('.btn-nav'),
     ALL_TABS: document.querySelectorAll('.tabs_block'),
-}
+};
 
 const FORMELEMENTS = {
     MAIN_FORM: document.querySelector('.main-form'),
@@ -26,12 +26,12 @@ const DETAILSBLOCK = {
     WEATHER: document.querySelector('.det-weather'),
     SUNRISE: document.querySelector('.det-sunrise'),
     SUNSET: document.querySelector('.det-sunset'),
-}
+};
 
 const FORECASTBLOCKEL = {
     CITY: document.querySelector('.main-forecast-cities'),
     BLOCK: document.querySelector('.for'),
-}
+};
 
 let divList = document.querySelector('.div-list');
 

@@ -31,7 +31,7 @@ function createForecastEl(value) {
     forecastFeelPict.className = 'forecast_feel_pict';
     let forecastFeel = document.createElement('p');
     forecastFeel.className = 'forecast_feel';
-    forecastFeel.textContent = `Feels like: ${getCelsius(value.main.feels_like)}`
+    forecastFeel.textContent = `Feels like: ${getCelsius(value.main.feels_like)}`;
     const forecastPict = document.createElement('img');
     forecastPict.className = 'forecast_pict';
     forecastPict.src = `http://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png`;
@@ -39,7 +39,7 @@ function createForecastEl(value) {
 
     forecastBlock.prepend(forecastDateTime, forecastTempCondition, forecastFeelPict,);
 
-    FORECASTBLOCKEL.BLOCK.append(forecastBlock)
+    FORECASTBLOCKEL.BLOCK.append(forecastBlock);
 }
 
 export default createForecastEl;

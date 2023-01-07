@@ -10,7 +10,7 @@ const storage = {
         if(localStorage.getItem('city') !== null) {
             arr = JSON.parse(res);
         }
-        return arr
+        return arr;
     },
     setCurrentCity: (value) => {
         localStorage.setItem('currentCity', value);
@@ -22,7 +22,7 @@ const storage = {
         } else {
             res = 'Moscow';
         }
-        return res
+        return res;
     },
 };
 

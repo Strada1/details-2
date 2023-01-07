@@ -20,7 +20,7 @@ function showList() {
         createCityEl(item);
     });
     storage.setFavCities(listArr);
-};
+}
 
 FORMELEMENTS.MAIN_FORM.addEventListener('submit', (event) =>{
     event.preventDefault();
@@ -36,28 +36,29 @@ function formHandler() {
     getRequest(serverUrl, FORMELEMENTS.CITY_INPUT.value);
     getForecastRequest(forecastUrl, FORMELEMENTS.CITY_INPUT.value);
     FORMELEMENTS.CITY_INPUT.value = '';
-};
+}
 
 function heartHandler() {
     addToarr(NOWBLOCKEL.CITY.textContent);
     showList();
-};
+}
 
 function getRequest(link, cityName) {
     fetch( `${link}?q=${cityName}&appid=${apiKey}`)
     .then(response => {
         if(response.ok) {
-            return response.json()
+            return response.json();
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
-        response.json()})
+        response.json();
+    })
     .then(data => {
         renderData(data);
         renderDetails(data);
         storage.setCurrentCity(data.name);
     });
-};
+}
 
 function getForecastRequest(link, cityName) {
     fetch(`${link}?q=${cityName}&appid=${apiKey}`)
@@ -71,17 +72,17 @@ function getForecastRequest(link, cityName) {
             createForecastEl(item);
         });
     });
-};
+}
 
 function createCityEl(name) {
     const newEl = document.createElement('li');
     newEl.className = 'cityList';
     newEl.textContent = name;
-    newEl.addEventListener('click', function(item) {
+    newEl.addEventListener('click', function() {
         toggleLike(name);
         getRequest(serverUrl, name);
         getForecastRequest(forecastUrl, name);
-    })
+    });
     const cross = document.createElement('button');
     cross.textContent = '+';
     cross.className = 'cross';
@@ -90,7 +91,7 @@ function createCityEl(name) {
     cross.addEventListener('click', () => {
         deleteFromArr(name);
     });
-};
+}
 
 function deleteFromArr(cityName) {
     if(listArr.has(cityName)) {
@@ -98,4 +99,4 @@ function deleteFromArr(cityName) {
     }
     storage.setFavCities(listArr);
     showList();
-};
+}
