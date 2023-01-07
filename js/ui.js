@@ -29,15 +29,15 @@ UI_ELEMENTS.TABS.forEach((item) => {
 export function showWeatherNow(data) {
   const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
   UI_ELEMENTS.NOW_TEMPERATURE.textContent = data.main.temp.toFixed(1);
-  UI_ELEMENTS.NOW_CITY.textContent = data.name;
+  UI_ELEMENTS.NOW_CITY.textContent = data?.name;
   UI_ELEMENTS.NOW_ICON.setAttribute('src', iconUrl);
 }
 
 export function showWeatherDetails(data) {
-  UI_ELEMENTS.DETAILS_CITY.textContent = data.name;
-  UI_ELEMENTS.DETAILS_TEMP.textContent = data.main.temp.toFixed(0);
-  UI_ELEMENTS.DETAILS_FEELS.textContent = data.main.feels_like.toFixed(0);
-  UI_ELEMENTS.DETAILS_WEATHER.textContent = data.weather[0].main;
-  UI_ELEMENTS.DETAILS_SUNRISE.textContent = convertTime(data.sys.sunrise);
-  UI_ELEMENTS.DETAILS_SUNSET.textContent = convertTime(data.sys.sunset);
+  UI_ELEMENTS.DETAILS_CITY.textContent = data?.name;
+  UI_ELEMENTS.DETAILS_TEMP.textContent = data?.main?.temp.toFixed(0);
+  UI_ELEMENTS.DETAILS_FEELS.textContent = data?.main?.feels_like.toFixed(0);
+  UI_ELEMENTS.DETAILS_WEATHER.textContent = data?.weather[0]?.main;
+  UI_ELEMENTS.DETAILS_SUNRISE.textContent = convertTime(data?.sys?.sunrise);
+  UI_ELEMENTS.DETAILS_SUNSET.textContent = convertTime(data?.sys?.sunset);
 }
