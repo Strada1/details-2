@@ -3,7 +3,7 @@ export function addStorageCurrentCity(cityName) {
 }
 
 export function getStorageCurrentCity() {
-  let arrCookie = document.cookie.split('=');
+  const arrCookie = document.cookie.split('=');
   const isValid = document.cookie === 'currentCity=';
   if (isValid) {
     return;
