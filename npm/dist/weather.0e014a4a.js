@@ -632,7 +632,6 @@ function render() {
         ...favouriteCities
     ]);
 }
-const serverUrl = "https://api.openweathermap.org/data/2.5/weather";
 function addCity(favCity) {
     const li = document.createElement("li");
     li.className = "li";
@@ -656,7 +655,7 @@ function addCity(favCity) {
     });
 }
 
-},{"date-fns":"9yHCA","./uiElements.js":"6zmqo","./changingTabs.js":"gBj1p","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./apiRequest.js":"gsGZs","js-cookie":"c8bBu"}],"9yHCA":[function(require,module,exports) {
+},{"date-fns":"9yHCA","./uiElements.js":"6zmqo","./changingTabs.js":"gBj1p","./apiRequest.js":"gsGZs","js-cookie":"c8bBu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9yHCA":[function(require,module,exports) {
 // This file is generated automatically by `scripts/build/indices.ts`. Please, don't change it.
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -3583,19 +3582,19 @@ var _jsCookieDefault = parcelHelpers.interopDefault(_jsCookie);
 "use script";
 const serverUrl = "https://api.openweathermap.org/data/2.5/weather";
 async function cityTemp(city) {
-    let cityName = `${(0, _uiElementsJs.ELEMENTS).inpCity.value}`;
+    const cityName = `${(0, _uiElementsJs.ELEMENTS).inpCity.value}`;
     if ((0, _uiElementsJs.ELEMENTS).inpCity.value === "") (0, _jsCookieDefault.default).get("name") ?? ((0, _weatherJs.obj).currentCity = cityName);
     else (0, _weatherJs.obj).currentCity = cityName;
     city = (0, _weatherJs.obj).currentCity;
     try {
         const apiKey = "f660a2fb1e4bad108d6160b7f58c555f";
         const url = `${serverUrl}?q=${city}&appid=${apiKey}`;
-        let response = await fetch(url);
-        let jss = await response.json();
+        const response = await fetch(url);
+        const jss = await response.json();
         const { main: { temp , feelsLike  } , sys: { sunrise , sunset  } , weather: { 0: { main  }  } , name  } = jss;
         (0, _uiElementsJs.ELEMENTS).temper.textContent = `${Math.floor(temp - 273)}°`;
         (0, _uiElementsJs.ELEMENTS).city.textContent = name;
-        (0, _uiElementsJs.ELEMENTS).imageTemp.src = `https://openweathermap.org/img/wn/${jss.weather[0]["icon"]}@4x.png`;
+        (0, _uiElementsJs.ELEMENTS).imageTemp.src = `https://openweathermap.org/img/wn/${jss.weather[0].icon}@4x.png`;
         (0, _jsCookieDefault.default).set("name", name, {
             expires: 1 / 24
         });
@@ -3605,20 +3604,19 @@ async function cityTemp(city) {
         (0, _uiElementsJs.ELEMENTS).listDetails.children[2].textContent = `Weather: ${main}`;
         (0, _uiElementsJs.ELEMENTS).listDetails.children[3].textContent = `Sunrise: ${new Date(sunrise * 1000).getHours()}:${new Date(sunrise * 1000).getMinutes()}`;
         (0, _uiElementsJs.ELEMENTS).listDetails.children[4].textContent = `Sunset: ${new Date(sunset * 1000).getHours()}:${new Date(sunset * 1000).getMinutes()}`;
-        let fav = [
+        const fav = [
             ...(0, _weatherJs.favouriteCities)
         ].find((item)=>item == (0, _uiElementsJs.ELEMENTS).city.textContent);
         if (fav) (0, _weatherJs.svg).classList.add("filled");
         else (0, _weatherJs.svg).classList.remove("filled");
         console.log(jss);
         (0, _uiElementsJs.ELEMENTS).inpCity.value = null;
-    // }
     } catch (err) {
         alert(err);
     }
 }
 
-},{"./uiElements.js":"6zmqo","./weather.js":"bRRRP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","js-cookie":"c8bBu"}],"c8bBu":[function(require,module,exports) {
+},{"./uiElements.js":"6zmqo","./weather.js":"bRRRP","js-cookie":"c8bBu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c8bBu":[function(require,module,exports) {
 (function(global, factory) {
     module.exports = factory();
 })(this, function() {
