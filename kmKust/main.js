@@ -80,13 +80,13 @@ async function cityDataSearch(cityName) {
         if (!data.name) {
             throw new Error('Введите существующий город');
         }
-        CityData(data);
+        сityData(data);
     } catch (error) {
         alert(`Ошибка: ${error.message}`);
     }
 }
 
-const CityData = ({ name, main, weather, sys }) => {
+const сityData = ({ name, main, weather, sys }) => {
     let cityName = name;
     let degreesCelsius = Math.round(main.temp - 273, 15) + '°';
     let imgLocation = `http://openweathermap.org/img/wn/${weather[0].icon}@4x.png`;
