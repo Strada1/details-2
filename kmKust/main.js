@@ -78,7 +78,6 @@ async function cityDataSearch(cityName) {
     try {
         let response = await fetch(url);
         let data = await response.json();
-
         if (!data.name) {
             throw new Error('Введите существующий город');
         }
