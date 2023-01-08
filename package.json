@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "parcel": "^2.8.2"
+  },
+  "dependencies": {
+    "js-cookie": "^3.0.1"
+  }
+}

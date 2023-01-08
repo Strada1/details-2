@@ -549,15 +549,19 @@ async function handleContentLoaded() {
     if (localStorageLength === 0) await (0, _storageMethodsJs.storage).defaultLocalStorage();
     if (document.cookie === "") {
         let cityDivText = (0, _viewJs.CITY_DIV).textContent;
-        await saveCurrentCityCookie(cityDivText);
-        await getCookie("currentCity");
-    } else await getCookie("currentCity");
+        await setCookie(cityDivText);
+        await getCookie();
+    } else await getCookie();
 }
-function getCookie(cookieCurrentCity) {
-    let matches = document.cookie.match(cookieCurrentCity).input;
-    let arrayFromMatches = matches.split("=");
-    let cityName = arrayFromMatches[1];
+function getCookie() {
+    let cityName = (0, _jsCookieDefault.default).get("currentCity");
     cityDataSearch(cityName);
+}
+function setCookie(cityDivText) {
+    let in1horse = 1 / 24;
+    (0, _jsCookieDefault.default).set("currentCity", `${cityDivText}`, {
+        expires: in1horse
+    });
 }
 function chooseTab() {
     let currentTab = (0, _storageMethodsJs.storage).getCurrentTab();
@@ -611,12 +615,8 @@ function render() {
     let lengthArray = jsonParseLs.length - 1;
     chooseTab();
     getCitysName(jsonParseLs, lengthArray);
-    saveCurrentCityCookie(cityDivText);
+    setCookie(cityDivText);
     (0, _changeUIJs.changeColorHeart)();
-    console.log((0, _jsCookieDefault.default).get());
-}
-function saveCurrentCityCookie(cityDivText) {
-    document.cookie = `currentCity = ${cityDivText};max-age=3600`;
 }
 function getCitysName(jsonParseLs, lengthArray) {
     if (lengthArray === 0) return (0, _changeUIJs.displayAddedLocations)(jsonParseLs[lengthArray]);

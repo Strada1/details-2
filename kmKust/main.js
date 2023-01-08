@@ -36,18 +36,21 @@ async function handleContentLoaded() {
     }
     if (document.cookie === '') {
         let cityDivText = CITY_DIV.textContent;
-        await saveCurrentCityCookie(cityDivText);
-        await getCookie('currentCity');
+        await setCookie(cityDivText);
+        await getCookie();
     } else {
-        await getCookie('currentCity');
+        await getCookie();
     }
 }
 
-function getCookie(cookieCurrentCity) {
-    let matches = document.cookie.match(cookieCurrentCity).input;
-    let arrayFromMatches = matches.split('=');
-    let cityName = arrayFromMatches[1];
+function getCookie() {
+    let cityName = Cookies.get('currentCity');
     cityDataSearch(cityName);
+}
+
+function setCookie(cityDivText) {
+    let in1horse = 1 / 24;
+    Cookies.set('currentCity', `${cityDivText}`, { expires: in1horse });
 }
 
 function chooseTab() {
@@ -123,12 +126,8 @@ function render() {
 
     chooseTab();
     getCitysName(jsonParseLs, lengthArray);
-    saveCurrentCityCookie(cityDivText);
+    setCookie(cityDivText);
     changeColorHeart();
-}
-
-function saveCurrentCityCookie(cityDivText) {
-    document.cookie = `currentCity = ${cityDivText};max-age=3600`;
 }
 
 function getCitysName(jsonParseLs, lengthArray) {
