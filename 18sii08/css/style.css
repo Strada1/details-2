@@ -1,0 +1,23 @@
+.container {
+    width: 211px;
+    margin: 0 auto;
+}
+
+.date{
+    margin-bottom: 10px;
+}
+.timer-container {
+    align-items: center;
+    display: grid;
+    grid-auto-columns: max-content;
+    grid-auto-flow: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
