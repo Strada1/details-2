@@ -11,7 +11,7 @@ loc.innerHTML = format(new Date(), "Pp");
 TABS.weatherButtons.addEventListener("click", function (event) {
   const clickButton = event.target;
   if (checkClickTabs(clickButton)) {
-    changeTabs(clickButton);
+    changeTabs(clickButton)
   }
 });
 
