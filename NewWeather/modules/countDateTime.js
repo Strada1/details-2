@@ -15,16 +15,7 @@ function getHumanHours(date) {
 }
 
 function dateTimeToHuman(value) {
-    const day = value.getDate();
-    const month = months[value.getMonth()];
-    return `${day} ${month}`;
+    return format(new Date(value), 'dd MMMM');
 }
 
-const months = [
-    "January","February","March",
-    "April","May","June",
-    "July","August","September",
-    "October","November","December"
-];
-
-export {getCelsius, getHumanHours, dateTimeToHuman, months};
+export {getCelsius, getHumanHours, dateTimeToHuman};
