@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Weather</title>
+  </head>
+  <body>
+    <div class="container">
+      <form class="search">
+        <input type="text" class="input" placeholder="Введите город" />
+        <button class="search-btn">
+          <img src="img/search.svg" alt="" class="search-img" />
+        </button>
+      </form>
+      <div class="wrapper">
+        <div class="wrapper-left">
+          <div class="now tabs" id="now">
+            <h2 class="info-degree"></h2>
+            <img src="#" alt="" class="info-img" />
+            <footer class="info-footer">
+              <p class="city-name"></p>
+              <img src="img/heart.svg" alt="" class="info-footer__img" />
+            </footer>
+          </div>
+          <div class="details tabs" id="details">
+            <p class="details-title"></p>
+            <div class="details-info">
+              <div class="detail">
+                <p class="detail-title">Temperature:</p>
+                <p class="temperature"></p>
+              </div>
+              <div class="detail">
+                <p class="detail-title">Feels like:</p>
+                <p class="feels"></p>
+              </div>
+              <div class="detail">
+                <p class="detail-title">Weather:</p>
+                <p class="weather"></p>
+              </div>
+              <div class="detail">
+                <p class="detail-title">Sunrise:</p>
+                <p class="sunrise"></p>
+              </div>
+              <div class="detail">
+                <p class="detail-title">Sunset:</p>
+                <p class="sunset"></p>
+              </div>
+            </div>
+          </div>
+          <div class="forecast tabs" id="forecast">
+            <p class="forecast-title"></p>
+            <div class="forecast__card_list"></div>
+          </div>
+          <div class="buttons">
+            <a href="#now" class="btn btn-active">Now</a>
+            <a href="#details" class="btn">Details</a>
+            <a href="#forecast" class="btn">Forecast</a>
+          </div>
+        </div>
+        <div class="wrapper-right">
+          <div class="wrapper-right__header">
+            <p class="wrapper-right__title">Added Locations:</p>
+          </div>
+          <div class="city-select">
+            <ul class="citys"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/js/index.js"></script>
+  </body>
+</html>
