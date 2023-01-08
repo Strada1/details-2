@@ -74,7 +74,6 @@ async function cityDataSearch(cityName) {
     const serverUrl = 'http://api.openweathermap.org/data/2.5/weather';
     const apiKey = '3bfb7384f048b8e78896a10d694dd618';
     const url = `${serverUrl}?q=${cityName}&appid=${apiKey}`;
-
     try {
         let response = await fetch(url);
         let data = await response.json();
