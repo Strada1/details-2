@@ -4,13 +4,16 @@ export function addStorageCurrentCity(cityName) {
 
 export function getStorageCurrentCity() {
   let arrCookie = document.cookie.split('=');
+  const isValid = document.cookie === 'currentCity=';
+  if (isValid) {
+    return;
+  }
   return arrCookie[1];
 }
 
 export function addStorageFavoriteCities(array) {
   const json = JSON.stringify(array);
   localStorage.setItem('favoriteCities', json);
-
 }
 
 export function getStorageFavoriteCities() {
