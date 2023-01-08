@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=650" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <title>Are you ready for the New Year?</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="title"></div>
+      <div class="main-section-digits">
+        <div class="section-days">
+          <div class="days">
+            <div class="block-numbers days-block">
+              <div class="digit days-one"></div>
+              <div class="digit days-two"></div>
+              <div class="digit days-tree"></div>
+            </div>
+            <div class="subtitle sub-days"></div>
+          </div>
+        </div>
+        <div class="section-numbers">
+          <div class="hours block">
+            <div class="block-numbers hours-block">
+              <div class="digit hours-one"></div>
+              <div class="digit hours-two"></div>
+            </div>
+            <div class="subtitle sub-hours"></div>
+          </div>
+          <div class="dots">
+            <div class="dots-block">
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+          <div class="minutes block">
+            <div class="block-numbers minutes-block">
+              <div class="digit minutes-one"></div>
+              <div class="digit minutes-two"></div>
+            </div>
+            <div class="subtitle sub-minutes"></div>
+          </div>
+          <div class="dots">
+            <div class="dots-block">
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+          <div class="seconds block">
+            <div class="block-numbers seconds-block">
+              <div class="digit seconds-one"></div>
+              <div class="digit seconds-two"></div>
+            </div>
+            <div>
+              <div class="subtitle sub-seconds"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="all-buttons">
+        <div class="buttons-one-two">
+          <button class="button-color button set-color-btn"></button>
+          <button class="button-gradient button set-color-btn"></button>
+        </div>
+        <div class="buttons-three-four">
+          <button class="button-black button set-color-btn"></button>
+          <button class="button-edit button"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-edit">
+      <div class="window-for-edit">
+        <button class="close-button">
+          <img src="./images/close.png" alt="" srcset="" />
+        </button>
+        <form class="edit-form" action="">
+          <label class="edit-label" for=""
+            >You can set a new title and time<br />
+            or reset all these changes</label
+          >
+          <input
+            class="edit-title"
+            type="text"
+            placeholder="Enter your title.."
+            value="Are you ready for the New Year?"
+            maxlength="60"
+          />
+          <div class="block-time">
+            <input class="edit-date" type="date" name="" value="2023-01-01" />
+            <input class="edit-time" type="time" value="00:00" />
+          </div>
+          <div class="block-buttons">
+            <button class="make-changes-button">Make changes</button>
+            <button class="reset-button">Reset settings</button>
+          </div>
+        </form>
+        <div class="block-language">
+          <button class="button-eng button-language" data-lang="eng">
+            English
+          </button>
+          <button class="button-rus button-language" data-lang="rus">
+            Русский
+          </button>
+          <button class="button-esp button-language" data-lang="esp">
+            Español
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
