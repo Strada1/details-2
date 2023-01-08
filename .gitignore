@@ -1,29 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-.parcel-cache
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
 
-# testing
-/coverage
-
-# production
-/build
-/dist
 /.parcel-cache
-
-# misc
-Thumbs.db
-.DS_Store
-.env
-*.log*
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# editors
-.idea
-*.sublime*
-.vscode
+/node_modules
+/dist
