@@ -1,0 +1,25 @@
+.container {
+  width: 211px;
+  margin: 0 auto;
+}
+
+.date {
+  margin-bottom: 10px;
+}
+
+.timer-container {
+  text-align: center;
+  grid-auto-columns: max-content;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+}
+
+.timer {
+  flex-direction: column;
+  margin-left: 10px;
+  display: flex;
+}
+
+/*# sourceMappingURL=index.b2625c6b.css.map */
