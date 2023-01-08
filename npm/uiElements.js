@@ -8,8 +8,8 @@ const ELEMENTS = {
     temper : document.getElementById('temp'),
     city : document.getElementById('cityCurrentName'),
     imageTemp : document.querySelector('.imageTemp img'),
-    
-   
+    chosenCity : document.querySelector('.chosenCity h4'),
+     
 }
 
 const TABS = {

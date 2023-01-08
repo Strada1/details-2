@@ -169,6 +169,10 @@ hr{
   font-size: 25px;
 }
 
+.chosenCity h4{
+  margin: 0;
+  padding: 0;
+}
 
 
 .screens1 button:hover {
@@ -195,7 +199,8 @@ hr{
 }
 
 .table-scroll{
-  overflow-x: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 250px;
   margin-bottom: 16px;
 
@@ -203,8 +208,8 @@ hr{
 .iconWeather {
   margin-top: -20px;
   margin-left: -3%;
-  height: 31px;
-  width: 31px;
+  height: 60px;
+  width: 60px;
 }
 
 
