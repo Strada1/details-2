@@ -7,11 +7,6 @@ const SERVER_URL = 'http://api.openweathermap.org/data/2.5/weather';
 const API_KEY = 'f660a2fb1e4bad108d6160b7f58c555f';
 let favoriteCityList = [];
 
-UI_ELEMENTS.NOW_BTN_LIKE.addEventListener('click', () => {
-  const cityName = UI_ELEMENTS.NOW_BTN_LIKE.previousElementSibling.textContent;
-  addCityFavorite(cityName);
-});
-
 function addCityFavorite(cityName) {
   const isValid = favoriteCityList.includes(cityName);
   if (isValid) {
@@ -25,6 +20,11 @@ function addCityFavorite(cityName) {
     renderFavoriteCity();
   }
 }
+
+UI_ELEMENTS.NOW_BTN_LIKE.addEventListener('click', () => {
+  const cityName = UI_ELEMENTS.NOW_BTN_LIKE.previousElementSibling.textContent;
+  addCityFavorite(cityName);
+});
 
 function deleteFavoriteCity() {
   const cityName = this.parentNode.textContent;
