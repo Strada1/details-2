@@ -36,7 +36,7 @@ storage.saveCurrentCity = function (value) {
 
 export const obj = { currentCity: Cookies.get("name") };
 
-cityTemp(obj.currentCity);
+cityTemp(obj.currentCity??"Aktobe");
 
 ELEMENTS.searchCity.addEventListener("click", function (e) {
   e.preventDefault();

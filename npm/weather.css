@@ -91,10 +91,9 @@ th {
   img{
     justify-content: center;
     text-align: center;
-    margin: 10px 35%;
-    margin-top: 20px;
-    width: 78px;
-    height: 79px;
+    margin: -16px 11% -45px;
+    height: 170px;
+    width: 170px;
   }
 
 .city{
@@ -134,8 +133,8 @@ hr{
   position: relative;
   justify-content: flex-end;
   bottom: -15px;
-  margin-left: -4%;
-  margin-right: -4%;
+  margin-left: -3.85%;
+  margin-right: -3.85%;
   align-items: flex-end;
   align-content: flex-end;
  }

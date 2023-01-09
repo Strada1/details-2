@@ -32,7 +32,7 @@ async function cityTemp (city) {
     const {
       list
     } = jss2;
-
+    console.log(list)
     function render () {
       div.textContent = "";
       for (const item of list) {
