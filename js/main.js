@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 import { UI_ELEMENTS, showWeatherNow, showWeatherDetails } from './ui';
 import {
   addStorageCurrentCity, getStorageCurrentCity, addStorageFavoriteCities, getStorageFavoriteCities,
@@ -88,8 +87,8 @@ UI_ELEMENTS.NOW_BTN_LIKE.addEventListener('click', () => {
   addCityFavorite(cityName);
 });
 
-getWeather();
-getStorageFavoriteCities();
-renderFavoriteCity();
-
-console.log(format(new Date(), '\'Today is a\' eeee'));
+document.addEventListener('DOMContentLoaded', () => {
+  getWeather();
+  getStorageFavoriteCities();
+  renderFavoriteCity();
+});
