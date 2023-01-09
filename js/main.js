@@ -1,6 +1,9 @@
 import { format } from 'date-fns';
 import { UI_ELEMENTS, showWeatherNow, showWeatherDetails } from './ui.js';
-import { addStorageCurrentCity, getStorageCurrentCity, addStorageFavoriteCities, getStorageFavoriteCities } from './storage.js';
+import {
+  addStorageCurrentCity, getStorageCurrentCity, addStorageFavoriteCities, getStorageFavoriteCities,
+} from './storage.js';
+
 window.location.hash = 'now';
 
 const SERVER_URL = 'http://api.openweathermap.org/data/2.5/weather';
