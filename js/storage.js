@@ -4,9 +4,9 @@ export function addStorageCurrentCity(cityName) {
 
 export function getStorageCurrentCity() {
   const arrCookie = document.cookie.split('=');
-  const isValid = document.cookie === 'currentCity=';
-  if (isValid) {
-    return;
+  const isValid = document.cookie !== 'currentCity=';
+  if (!isValid) {
+    return 'Aktobe';
   }
   return arrCookie[1];
 }

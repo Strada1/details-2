@@ -1,8 +1,8 @@
 import { format } from 'date-fns';
-import { UI_ELEMENTS, showWeatherNow, showWeatherDetails } from './ui.js';
+import { UI_ELEMENTS, showWeatherNow, showWeatherDetails } from './ui';
 import {
   addStorageCurrentCity, getStorageCurrentCity, addStorageFavoriteCities, getStorageFavoriteCities,
-} from './storage.js';
+} from './storage';
 
 window.location.hash = 'now';
 
@@ -87,14 +87,6 @@ UI_ELEMENTS.NOW_BTN_LIKE.addEventListener('click', () => {
   const cityName = UI_ELEMENTS.NOW_BTN_LIKE.previousElementSibling.textContent;
   addCityFavorite(cityName);
 });
-
-export function convertTime(time) {
-  const date = new Date(time * 1000);
-  const hours = date.getHours().toString().padStart(2, '0');
-  const minutes = date.getMinutes().toString().padStart(2, '0');
-  const result = `${hours}:${minutes}`;
-  return result;
-}
 
 getWeather();
 getStorageFavoriteCities();

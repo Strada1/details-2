@@ -1,5 +1,3 @@
-import { convertTime } from './main.js';
-
 export const UI_ELEMENTS = {
   FAVORITE_LIST: document.querySelector('.weather__favorites-list'),
   FORM: document.querySelector('.weather__search-form'),
@@ -19,8 +17,8 @@ export const UI_ELEMENTS = {
 
 UI_ELEMENTS.TABS.forEach((item) => {
   item.addEventListener('click', () => {
-    UI_ELEMENTS.TABS.forEach((item) => {
-      item.classList.remove('tabs-item--active');
+    UI_ELEMENTS.TABS.forEach((itemTab) => {
+      itemTab.classList.remove('tabs-item--active');
     });
     item.classList.add('tabs-item--active');
   });
@@ -31,6 +29,14 @@ export function showWeatherNow(data) {
   UI_ELEMENTS.NOW_TEMPERATURE.textContent = data.main.temp.toFixed(1);
   UI_ELEMENTS.NOW_CITY.textContent = data?.name;
   UI_ELEMENTS.NOW_ICON.setAttribute('src', iconUrl);
+}
+
+function convertTime(time) {
+  const date = new Date(time * 1000);
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const result = `${hours}:${minutes}`;
+  return result;
 }
 
 export function showWeatherDetails(data) {
