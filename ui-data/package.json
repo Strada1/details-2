@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "parcel": "^2.8.2"
+  },
+  "dependencies": {
+    "date-fns": "^2.29.3"
+  }
+}
