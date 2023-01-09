@@ -7,38 +7,48 @@ const SERVER_URL = 'http://api.openweathermap.org/data/2.5/weather';
 const API_KEY = 'f660a2fb1e4bad108d6160b7f58c555f';
 let favoriteCityList = [];
 
-function addCityFavorite(cityName) {
-  const isValid = favoriteCityList.includes(cityName);
-  if (isValid) {
-    favoriteCityList = favoriteCityList.filter((item) => {
-      return item != cityName;
-    });
-    renderFavoriteCity();
-  } else {
-    favoriteCityList.push(cityName);
-    addStorageFavoriteCities(favoriteCityList);
-    renderFavoriteCity();
-  }
-}
-
-UI_ELEMENTS.NOW_BTN_LIKE.addEventListener('click', () => {
-  const cityName = UI_ELEMENTS.NOW_BTN_LIKE.previousElementSibling.textContent;
-  addCityFavorite(cityName);
-});
-
 function deleteFavoriteCity() {
   const cityName = this.parentNode.textContent;
   this.parentNode.remove();
-  favoriteCityList = favoriteCityList.filter(item => {
-    return item != cityName;
-  });
+  favoriteCityList = favoriteCityList.filter((item) => item !== cityName);
   addStorageFavoriteCities(favoriteCityList);
 }
+
+function checkCityFavorite(cityName) {
+  const isValid = favoriteCityList.includes(cityName);
+  if (!isValid) {
+    UI_ELEMENTS.NOW_BTN_LIKE.classList.remove('now__sities-btn--like');
+  } else {
+    UI_ELEMENTS.NOW_BTN_LIKE.classList.add('now__sities-btn--like');
+  }
+}
+
+async function getWeather(cityName) {
+  const city = cityName ?? getStorageCurrentCity() ?? 'Aktobe';
+  const url = `${SERVER_URL}?q=${city}&appid=${API_KEY}&units=metric`;
+  try {
+    const promise = await fetch(url);
+    const data = await promise.json();
+    checkCityFavorite(data.name);
+    showWeatherNow(data);
+    showWeatherDetails(data);
+  } catch (error) {
+    alert(error);
+  }
+}
+
+UI_ELEMENTS.FORM.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const cityName = UI_ELEMENTS.INPUT_FORM.value;
+  addStorageCurrentCity(cityName);
+  getWeather(cityName);
+  event.target.reset();
+});
 
 function renderFavoriteCity() {
   UI_ELEMENTS.FAVORITE_LIST.textContent = '';
   favoriteCityList = getStorageFavoriteCities();
-  favoriteCityList.forEach(element => {
+  favoriteCityList.forEach((element) => {
     const isValid = favoriteCityList.includes(element);
     const item = document.createElement('li');
     const button = document.createElement('button');
@@ -58,36 +68,22 @@ function renderFavoriteCity() {
   });
 }
 
-function checkCityFavorite(cityName) {
+function addCityFavorite(cityName) {
   const isValid = favoriteCityList.includes(cityName);
-  if (!isValid) {
-    UI_ELEMENTS.NOW_BTN_LIKE.classList.remove('now__sities-btn--like');
+  if (isValid) {
+    favoriteCityList = favoriteCityList.filter((item) => item !== cityName);
+    renderFavoriteCity();
   } else {
-    UI_ELEMENTS.NOW_BTN_LIKE.classList.add('now__sities-btn--like');
+    favoriteCityList.push(cityName);
+    addStorageFavoriteCities(favoriteCityList);
+    renderFavoriteCity();
   }
 }
 
-UI_ELEMENTS.FORM.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const cityName = UI_ELEMENTS.INPUT_FORM.value;
-  addStorageCurrentCity(cityName);
-  getWeather(cityName);
-  event.target.reset();
+UI_ELEMENTS.NOW_BTN_LIKE.addEventListener('click', () => {
+  const cityName = UI_ELEMENTS.NOW_BTN_LIKE.previousElementSibling.textContent;
+  addCityFavorite(cityName);
 });
-
-async function getWeather(cityName) {
-  const city = cityName ?? getStorageCurrentCity() ?? 'Aktobe';
-  const url = `${SERVER_URL}?q=${city}&appid=${API_KEY}&units=metric`;
-  try {
-    const promise = await fetch(url);
-    const data = await promise.json();
-    checkCityFavorite(data.name);
-    showWeatherNow(data);
-    showWeatherDetails(data);
-  } catch (error) {
-    alert(error);
-  }
-}
 
 export function convertTime(time) {
   const date = new Date(time * 1000);
