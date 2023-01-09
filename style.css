@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-top: 20%;
+    font-size: 20px;
+}
+
+.dataForSearch {
+    background: rgb(255, 233, 205);
+    width: 230px;
+    height: 30px;
+    font-size: 20px;
+}
+
+.btnSearch {
+    height: 30px;
+}
+
+.result {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    font-size: 20px;
+    background: rgb(189, 255, 172);
+    top: 44px;
+    left: -299px;
+}
