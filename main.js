@@ -34,17 +34,14 @@ async function handleContentLoaded() {
     if (localStorageLength === 0) {
         await storage.defaultLocalStorage();
     }
-    if (document.cookie === '') {
-        let cityDivText = CITY_DIV.textContent;
-        await setCookie(cityDivText);
-        await getCookie();
-    } else {
-        await getCookie();
-    }
+    getCookie();
 }
 
 function getCookie() {
-    let cityName = Cookies.get('currentCity');
+    let cityDivText = CITY_DIV.textContent;
+    let cityName =
+        Cookies?.get('currentCity') ??
+        (setCookie(cityDivText), Cookies.get('currentCity'));
     cityDataSearch(cityName);
 }
 
@@ -88,19 +85,19 @@ async function cityDataSearch(cityName) {
 
 const CityData = ({ name, main, weather, sys }) => {
     let cityName = name;
-    let degreesCelsius = Math.round(main.temp - 273, 15) + '°';
-    let imgLocation = `http://openweathermap.org/img/wn/${weather[0].icon}@4x.png`;
-    let feelsLike = Math.round(main.feels_like - 273, 15) + '°';
-    let weatherData = weather[0].main;
+    let degreesCelsius = Math.round(main?.temp - 273, 15) + '°';
+    let imgLocation = `http://openweathermap.org/img/wn/${weather[0]?.icon}@4x.png`;
+    let feelsLike = Math.round(main?.feels_like - 273, 15) + '°';
+    let weatherData = weather[0]?.main;
 
-    let sunriseDate = new Date(sys.sunrise * 1000);
-    let getHoursSunrise = sunriseDate.getHours();
-    let getMinutesSunrise = sunriseDate.getMinutes();
+    let sunriseDate = new Date(sys?.sunrise * 1000);
+    let getHoursSunrise = sunriseDate?.getHours();
+    let getMinutesSunrise = sunriseDate?.getMinutes();
     let timeSunrise = checkTime(getHoursSunrise, getMinutesSunrise);
 
-    let sunsetDate = new Date(sys.sunset * 1000);
-    let getHoursSunset = sunsetDate.getHours();
-    let getMinutesSunset = sunsetDate.getMinutes();
+    let sunsetDate = new Date(sys?.sunset * 1000);
+    let getHoursSunset = sunsetDate?.getHours();
+    let getMinutesSunset = sunsetDate?.getMinutes();
     let timeSunset = checkTime(getHoursSunset, getMinutesSunset);
 
     changeDivNow(cityName, degreesCelsius, imgLocation);
@@ -147,7 +144,6 @@ function changLocalStorage() {
     } else {
         jsonParseLs.push(cityDivText);
     }
-
     storage.saveFavoriteCities(jsonParseLs);
 }
 
