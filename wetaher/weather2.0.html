@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="weather2.0.css" />
+
+    <title>Weather 2.0</title>
+  </head>
+  <body>
+    <div class="weather">
+      <div class="container">
+        <form class="form" id="form">
+          <input class="search__input" type="text" id="input__search" placeholder="City name"/>
+          <i class="search__img"></i>
+        </form>
+        <div class="weather__columns">
+          <div class="weather__info">
+            <div class="weather__info-tabs">
+              <div id="tab_01" class="weather__info-now tabs--block">
+                <div class="temp">zz..</div>
+                <div class="weather__info-img">
+                  <img class="weather__icon" src="../images/cloud-icon.jpg" alt="" />
+                </div>
+                <div class="weather__info-footer">
+                  <h4 class="location">Bishkek</h4>
+                  <button class="favorite__button"></button>
+                </div>
+              </div>
+              <div id="tab_02" class="weather__info-details tabs--block">
+                <div class="details__city-name"></div>
+                <ul class="details__list">
+                  <li class="details__list-item">Temperature: <span class="details details__temp"></span></li>
+                  <li class="details__list-item">Feels like: <span class="details details__feels-like"></span></li>
+                  <li class="details__list-item">Weather: <span class="details details__weather"></span></li>
+                  <li class="details__list-item">Sunrise: <span class="details details__sunrise"></span></li>
+                  <li class="details__list-item">Sunset: <span class="details details__sunset"></span></li>
+                </ul>
+              </div>
+            </div>
+            <nav class="tabs">
+              <a href="#tab_01" class="tabs__item active" id="tab_01">Now</a>
+              <a href="#tab_02" class="tabs__item" id="tab_02">Details</a>
+              <a href="#" class="tabs__item" id="tab_03">Forecast</a>
+            </nav>
+          </div>
+
+          <div class="weather__locations">
+            <h3 class="title__locations">Added Locations:</h3>
+            <ul class="locations__list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="weather2.0.js"></script>
+  </body>
+</html>
